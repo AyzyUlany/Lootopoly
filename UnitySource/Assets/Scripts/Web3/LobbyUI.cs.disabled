@@ -1,0 +1,614 @@
+﻿using UnityEngine;
+using UnityEngine.UIElements;
+using System.Collections.Generic;
+using System.Collections;
+using System.Globalization; // <-- Added for InvariantCulture
+
+// ============================================================
+// LOOTOPOLY – LobbyUI  (v4.1 — Culture Invariant Fix)
+// ============================================================
+// v4.1 changes:
+//   • Fixed a crash where float.ToString() would output commas 
+//     ("0,1000") on European locales, breaking ethers.js parseEther.
+// ============================================================
+
+[RequireComponent(typeof(UIDocument))]
+public class LobbyUI : MonoBehaviour
+{
+    // ─────────────────────────────────────────────────────────
+    // INSPECTOR
+    // ─────────────────────────────────────────────────────────
+    [Header("Screens (assign Visual Element name roots in UXML)")]
+    public string connectScreenName  = "ConnectScreen";
+    public string lobbyScreenName    = "LobbyScreen";
+    public string waitingScreenName  = "WaitingScreen";
+
+    [Header("Scene References")]
+    [Tooltip("Assign GameManager so LobbyUI can push wallet addresses to Player components.")]
+    public GameManager gameManager;
+
+    [Header("Fee Presets (AVAX)")]
+    public float[] feePresets = { 0.05f, 0.1f, 0.5f, 1.0f };
+
+    // ─────────────────────────────────────────────────────────
+    // PRIVATE REFERENCES
+    // ─────────────────────────────────────────────────────────
+    private UIDocument _doc;
+    private VisualElement _root;
+
+    // Screens
+    private VisualElement _connectScreen;
+    private VisualElement _lobbyScreen;
+    private VisualElement _waitingScreen;
+
+    // Connect screen
+    private Button _btnConnect;
+    private Label  _lblConnectStatus;
+
+    // Lobby screen – stats
+    private Label _lblBalance;
+    private Label _lblOpenRooms;
+    private Label _lblTotalRooms;
+    private Label _lblClaimable;
+
+    // Lobby screen – room list
+    private ScrollView _roomList;
+
+    // Lobby screen – create panel
+    private FloatField _inputFee;
+    private IntegerField _inputMaxPlayers;
+    private Label  _lblPrizePreview;
+    private Button _btnCreateRoom;
+
+    // Waiting screen
+    private Label  _lblRoomId;
+    private Label  _lblRoomStatus;
+    private Label  _lblRoomPlayers;
+    private Label  _lblRoomPrize;
+    private Label  _lblCommitCountdown;
+    private Button _btnLockRoster;
+    private Button _btnCommit;
+    private Button _btnCancelRoom;
+    private Button _btnDeclareWinner;
+    private Button _btnRefresh;
+    private Button _btnWithdraw;
+
+    // v10 — new elements
+    private VisualElement _playerSlotsList;
+    private VisualElement _commitPanel;
+    private Label  _lblCommitFee;
+    private Label  _lblBigRoomId;
+
+    // Runtime state
+    private float _selectedFee      = 0.1f;
+    private int   _selectedMaxPlayers = 3;
+    private float _commitDeadlineUnix = 0;
+    private bool  _countdownRunning  = false;
+
+    // ─────────────────────────────────────────────────────────
+    // LIFECYCLE
+    // ─────────────────────────────────────────────────────────
+
+    private void OnEnable()
+    {
+        // Subscribe to Web3Manager events
+        Web3Manager.OnBridgeReadyEvt       += HandleBridgeReady;
+        Web3Manager.OnWalletConnectedEvt   += HandleWalletConnected;
+        Web3Manager.OnWalletErrorEvt       += HandleWalletError;
+        Web3Manager.OnLobbyDataLoadedEvt   += HandleLobbyData;
+        Web3Manager.OnRoomCreatedEvt       += HandleRoomCreated;
+        Web3Manager.OnRoomJoinedEvt        += HandleRoomJoined;
+        Web3Manager.OnRosterLockedEvt      += HandleRosterLocked;
+        Web3Manager.OnEntryFeeCommittedEvt += HandleEntryFeeCommitted;
+        Web3Manager.OnGameStartedEvt       += HandleGameStarted;
+        Web3Manager.OnRoomStateUpdatedEvt  += HandleRoomStateUpdated;
+        Web3Manager.OnContractEventEvt     += HandleContractEvent;
+        Web3Manager.OnTransactionErrorEvt  += HandleTxError;
+        Web3Manager.OnWinnerDeclaredEvt    += HandleWinnerDeclared;
+        Web3Manager.OnRoomCancelledEvt     += HandleRoomCancelled;
+        Web3Manager.OnWithdrawCompleteEvt  += HandleWithdrawComplete;
+        Web3Manager.OnChainChangedEvt      += HandleChainChanged;
+    }
+
+    private void OnDisable()
+    {
+        Web3Manager.OnBridgeReadyEvt       -= HandleBridgeReady;
+        Web3Manager.OnWalletConnectedEvt   -= HandleWalletConnected;
+        Web3Manager.OnWalletErrorEvt       -= HandleWalletError;
+        Web3Manager.OnLobbyDataLoadedEvt   -= HandleLobbyData;
+        Web3Manager.OnRoomCreatedEvt       -= HandleRoomCreated;
+        Web3Manager.OnRoomJoinedEvt        -= HandleRoomJoined;
+        Web3Manager.OnRosterLockedEvt      -= HandleRosterLocked;
+        Web3Manager.OnEntryFeeCommittedEvt -= HandleEntryFeeCommitted;
+        Web3Manager.OnGameStartedEvt       -= HandleGameStarted;
+        Web3Manager.OnRoomStateUpdatedEvt  -= HandleRoomStateUpdated;
+        Web3Manager.OnContractEventEvt     -= HandleContractEvent;
+        Web3Manager.OnTransactionErrorEvt  -= HandleTxError;
+        Web3Manager.OnWinnerDeclaredEvt    -= HandleWinnerDeclared;
+        Web3Manager.OnRoomCancelledEvt     -= HandleRoomCancelled;
+        Web3Manager.OnWithdrawCompleteEvt  -= HandleWithdrawComplete;
+        Web3Manager.OnChainChangedEvt      -= HandleChainChanged;
+    }
+
+    private void Start()
+    {
+        _doc  = GetComponent<UIDocument>();
+        _root = _doc.rootVisualElement;
+        BindElements();
+        ShowScreen(_connectScreen);
+    }
+
+    // ─────────────────────────────────────────────────────────
+    // ELEMENT BINDING
+    // ─────────────────────────────────────────────────────────
+
+    private void BindElements()
+    {
+        // Screens
+        _connectScreen = _root.Q(connectScreenName);
+        _lobbyScreen   = _root.Q(lobbyScreenName);
+        _waitingScreen = _root.Q(waitingScreenName);
+
+        // ── Connect screen ──
+        _btnConnect      = _root.Q<Button>("BtnConnect");
+        _lblConnectStatus= _root.Q<Label>("LblConnectStatus");
+        if (_btnConnect != null)
+            _btnConnect.clicked += () => Web3Manager.Instance?.ConnectWallet();
+
+        // ── Lobby: stats ──
+        _lblBalance    = _root.Q<Label>("LblBalance");
+        _lblOpenRooms  = _root.Q<Label>("LblOpenRooms");
+        _lblTotalRooms = _root.Q<Label>("LblTotalRooms");
+        _lblClaimable  = _root.Q<Label>("LblClaimable");
+
+        // ── Lobby: room list ──
+        _roomList = _root.Q<ScrollView>("RoomList");
+
+        // ── Lobby: create room ──
+        _inputFee        = _root.Q<FloatField>("InputFee");
+        _inputMaxPlayers = _root.Q<IntegerField>("InputMaxPlayers");
+        _lblPrizePreview = _root.Q<Label>("LblPrizePreview");
+        _btnCreateRoom   = _root.Q<Button>("BtnCreateRoom");
+
+        if (_inputFee != null)
+        {
+            _inputFee.value = _selectedFee;
+            _inputFee.RegisterValueChangedCallback(evt => {
+                _selectedFee = evt.newValue;
+                UpdatePrizePreview();
+            });
+        }
+
+        if (_inputMaxPlayers != null)
+        {
+            _inputMaxPlayers.value = _selectedMaxPlayers;
+            _inputMaxPlayers.RegisterValueChangedCallback(evt => {
+                _selectedMaxPlayers = Mathf.Clamp(evt.newValue, 2, 4);
+                UpdatePrizePreview();
+            });
+        }
+
+        if (_btnCreateRoom != null)
+            _btnCreateRoom.clicked += OnClickCreateRoom;
+
+        // ── Lobby: fee preset buttons ──
+        for (int i = 0; i < feePresets.Length; i++)
+        {
+            float fee = feePresets[i];
+            var btn = _root.Q<Button>($"FeePreset{i}");
+            if (btn != null)
+                btn.clicked += () => {
+                    _selectedFee = fee;
+                    if (_inputFee != null) _inputFee.value = fee;
+                    UpdatePrizePreview();
+                };
+        }
+
+        // ── Waiting screen ──
+        _lblRoomId            = _root.Q<Label>("LblRoomId");
+        _lblRoomStatus        = _root.Q<Label>("LblRoomStatus");
+        _lblRoomPlayers       = _root.Q<Label>("LblRoomPlayers");
+        _lblRoomPrize         = _root.Q<Label>("LblRoomPrize");
+        _lblCommitCountdown   = _root.Q<Label>("LblCommitCountdown");
+        _btnLockRoster        = _root.Q<Button>("BtnLockRoster");
+        _btnCommit            = _root.Q<Button>("BtnCommit");
+        _btnCancelRoom        = _root.Q<Button>("BtnCancelRoom");
+        _btnDeclareWinner     = _root.Q<Button>("BtnDeclareWinner");
+        _btnRefresh           = _root.Q<Button>("BtnRefresh");
+        _btnWithdraw          = _root.Q<Button>("BtnWithdraw");
+
+        // v10 new elements
+        _playerSlotsList = _root.Q("PlayerSlotsList");
+        _commitPanel     = _root.Q("CommitPanel");
+        _lblCommitFee    = _root.Q<Label>("LblCommitFee");
+        _lblBigRoomId    = _root.Q<Label>("LblBigRoomId");
+
+        // Player count option buttons (replaces IntegerField)
+        foreach (int n in new[] { 2, 3, 4 })
+        {
+            int captured = n;
+            var btn = _root.Q<Button>($"PlayerOpt{n}");
+            if (btn != null)
+                btn.clicked += () => {
+                    _selectedMaxPlayers = captured;
+                    // Update active style
+                    foreach (int x in new[] { 2, 3, 4 })
+                    {
+                        var b = _root.Q<Button>($"PlayerOpt{x}");
+                        if (b != null)
+                        {
+                            b.RemoveFromClassList("player-opt-active");
+                            if (x == captured) b.AddToClassList("player-opt-active");
+                        }
+                    }
+                    UpdatePrizePreview();
+                };
+        }
+        // Set default active state
+        _root.Q<Button>("PlayerOpt3")?.AddToClassList("player-opt-active");
+
+        if (_btnLockRoster    != null) _btnLockRoster.clicked    += () => Web3Manager.Instance?.LockRoster();
+        if (_btnCommit        != null) _btnCommit.clicked        += () => Web3Manager.Instance?.CommitEntryFee();
+        if (_btnCancelRoom    != null) _btnCancelRoom.clicked    += OnClickCancelRoom;
+        if (_btnDeclareWinner != null) _btnDeclareWinner.clicked += OnClickDeclareWinner;
+        if (_btnRefresh       != null) _btnRefresh.clicked       += () => Web3Manager.Instance?.LoadLobbyData();
+        if (_btnWithdraw      != null) _btnWithdraw.clicked      += () => Web3Manager.Instance?.Withdraw();
+
+        UpdatePrizePreview();
+    }
+
+    // ─────────────────────────────────────────────────────────
+    // SCREEN MANAGEMENT
+    // ─────────────────────────────────────────────────────────
+
+    private void ShowScreen(VisualElement screen)
+    {
+        _connectScreen?.AddToClassList("hidden");
+        _lobbyScreen?.AddToClassList("hidden");
+        _waitingScreen?.AddToClassList("hidden");
+        screen?.RemoveFromClassList("hidden");
+    }
+
+    // ─────────────────────────────────────────────────────────
+    // WEB3 EVENT HANDLERS
+    // ─────────────────────────────────────────────────────────
+
+    private void HandleBridgeReady(bool ok, string error)
+    {
+        if (!ok && _lblConnectStatus != null)
+            _lblConnectStatus.text = "Error: " + error;
+    }
+
+    private void HandleWalletConnected(string address, string balEth)
+    {
+        if (_btnConnect != null)
+            _btnConnect.text = ShortAddr(address) + " ✓";
+
+        ShowScreen(_lobbyScreen);
+        Web3Manager.Instance?.LoadLobbyData();
+    }
+
+    private void HandleWalletError(string error)
+    {
+        if (_lblConnectStatus != null)
+            _lblConnectStatus.text = error;
+        SetButtonEnabled(_btnConnect, true, "Connect Wallet");
+    }
+
+    private void HandleLobbyData(Web3Manager.LobbyData data)
+    {
+        if (_lblBalance    != null) _lblBalance.text    = data.balance + " AVAX";
+        if (_lblOpenRooms  != null) _lblOpenRooms.text  = data.openRooms.Length.ToString();
+        if (_lblTotalRooms != null) _lblTotalRooms.text = data.totalRooms;
+        if (_lblClaimable  != null) _lblClaimable.text  = data.claimable + " AVAX";
+
+        PopulateRoomList(data.openRooms);
+    }
+
+    private void HandleRoomCreated(string roomId)
+    {
+        ShowWaitingRoom(roomId, isHost: true);
+    }
+
+    private void HandleRoomJoined(string roomId)
+    {
+        ShowWaitingRoom(roomId, isHost: false);
+    }
+
+    private void HandleRosterLocked(string roomId)
+    {
+        if (_lblRoomStatus != null) _lblRoomStatus.text = "COMMITTED — Pay entry fee!";
+        RefreshWaitingButtons();
+    }
+
+    private void HandleEntryFeeCommitted(string roomId)
+    {
+        if (_lblRoomStatus != null) _lblRoomStatus.text = "Committed ✓ — Waiting for others...";
+        SetButtonEnabled(_btnCommit, false, "✓ Committed");
+    }
+
+    private void HandleGameStarted(string roomId, string[] playerAddrs)
+    {
+        if (gameManager != null && playerAddrs != null)
+        {
+            for (int i = 0; i < playerAddrs.Length && i < gameManager.players.Count; i++)
+                gameManager.players[i].walletAddress = playerAddrs[i];
+        }
+
+        ShowScreen(null);
+        gameObject.SetActive(false);
+    }
+
+    private void HandleRoomStateUpdated(Web3Manager.RoomStateData data)
+    {
+        if (_lblRoomStatus  != null) _lblRoomStatus.text  = StateLabel(data.state);
+        if (_lblRoomPlayers != null) _lblRoomPlayers.text = data.currentPlayers + "/" + data.maxPlayers;
+        if (_lblRoomPrize   != null) _lblRoomPrize.text   = data.prizePoolEth + " AVAX";
+
+        if (data.state == (int)Web3Manager.RoomState.Committed && data.commitDeadlineUnix > 0)
+        {
+            _commitDeadlineUnix = data.commitDeadlineUnix;
+            if (!_countdownRunning)
+                StartCoroutine(RunCountdown());
+        }
+
+        if (data.state == (int)Web3Manager.RoomState.Live)
+            gameObject.SetActive(false);
+
+        RefreshWaitingButtons();
+    }
+
+    private void HandleContractEvent(Web3Manager.ContractEvent e)
+    {
+        switch (e.@event)
+        {
+            case "PlayerJoined":
+                if (_lblRoomStatus != null && e.roomId == Web3Manager.Instance?.ActiveRoomId)
+                    _lblRoomStatus.text = "Player joined (" + e.playerCount + " total)";
+                break;
+            case "GameStarted":
+                gameObject.SetActive(false);
+                break;
+            case "WinnerPaid":
+                ShowScreen(_lobbyScreen);
+                break;
+        }
+    }
+
+    private void HandleTxError(string error)
+    {
+        Debug.LogError("[LobbyUI] Transaction error: " + error);
+        SetButtonEnabled(_btnCreateRoom, true, "🎲 Create Room");
+    }
+
+    private void HandleWinnerDeclared(string roomId, string winner)
+    {
+        ShowScreen(_lobbyScreen);
+        Web3Manager.Instance?.LoadLobbyData();
+    }
+
+    private void HandleRoomCancelled(string roomId)
+    {
+        ShowScreen(_lobbyScreen);
+        Web3Manager.Instance?.LoadLobbyData();
+    }
+
+    private void HandleWithdrawComplete(string amountEth)
+    {
+        Debug.Log("[LobbyUI] Withdrew " + amountEth + " AVAX");
+        Web3Manager.Instance?.LoadLobbyData();
+    }
+
+    private void HandleChainChanged(string reason)
+    {
+        ShowScreen(_connectScreen);
+        if (_lblConnectStatus != null)
+            _lblConnectStatus.text = "Chain changed — please reconnect.";
+    }
+
+    // ─────────────────────────────────────────────────────────
+    // BUTTON HANDLERS
+    // ─────────────────────────────────────────────────────────
+
+    private void OnClickCreateRoom()
+    {
+        if (Web3Manager.Instance == null) return;
+        SetButtonEnabled(_btnCreateRoom, false, "⏳ Creating...");
+        
+        // FIX: Force InvariantCulture so the decimal is ALWAYS a period ("."), preventing JS crash
+        string formattedFee = _selectedFee.ToString("F4", CultureInfo.InvariantCulture);
+        
+        Web3Manager.Instance.CreateRoom(formattedFee, _selectedMaxPlayers);
+    }
+
+    private void OnClickCancelRoom()
+    {
+        Web3Manager.Instance?.CancelRoom();
+    }
+
+    private void OnClickDeclareWinner()
+    {
+        Debug.Log("[LobbyUI] DeclareWinner — wire this to your GameManager result.");
+    }
+
+    // ─────────────────────────────────────────────────────────
+    // ROOM LIST
+    // ─────────────────────────────────────────────────────────
+
+    private void PopulateRoomList(Web3Manager.RoomInfo[] rooms)
+    {
+        if (_roomList == null) return;
+        _roomList.Clear();
+
+        if (rooms == null || rooms.Length == 0)
+        {
+            var empty = new Label("No open rooms. Create one!");
+            empty.AddToClassList("empty-label");
+            _roomList.Add(empty);
+            return;
+        }
+
+        foreach (var room in rooms)
+        {
+            var card = BuildRoomCard(room);
+            _roomList.Add(card);
+        }
+    }
+
+    private VisualElement BuildRoomCard(Web3Manager.RoomInfo room)
+    {
+        var card = new VisualElement();
+        card.AddToClassList("room-card");
+
+        var left = new VisualElement();
+        left.AddToClassList("room-card-left");
+
+        var lblId  = new Label($"Room #{room.roomId} · {ShortAddr(room.host)}");
+        lblId.AddToClassList("room-id-label");
+
+        var lblFee = new Label($"{room.entryFeeEth} AVAX entry");
+        lblFee.AddToClassList("room-fee-label");
+
+        var lblMeta = new Label($"Prize ~{FormatPrize(room.entryFeeEth, room.maxPlayers)} AVAX · {room.currentPlayers}/{room.maxPlayers} players");
+        lblMeta.AddToClassList("room-meta-label");
+
+        left.Add(lblId);
+        left.Add(lblFee);
+        left.Add(lblMeta);
+
+        var btnJoin = new Button();
+        btnJoin.AddToClassList("join-btn");
+        bool isMine = room.host.ToLower() == Web3Manager.Instance?.WalletAddress?.ToLower();
+        bool isFull = room.currentPlayers >= room.maxPlayers;
+        bool inRoom = !string.IsNullOrEmpty(Web3Manager.Instance?.ActiveRoomId);
+
+        if (isMine)       { btnJoin.text = "YOUR ROOM"; btnJoin.SetEnabled(false); }
+        else if (isFull)  { btnJoin.text = "FULL";      btnJoin.SetEnabled(false); }
+        else if (inRoom)  { btnJoin.text = "IN ROOM";   btnJoin.SetEnabled(false); }
+        else
+        {
+            btnJoin.text = "JOIN →";
+            string id = room.roomId;
+            btnJoin.clicked += () => {
+                btnJoin.text = "⏳...";
+                btnJoin.SetEnabled(false);
+                Web3Manager.Instance?.JoinRoom(id);
+            };
+        }
+
+        card.Add(left);
+        card.Add(btnJoin);
+        return card;
+    }
+
+    // ─────────────────────────────────────────────────────────
+    // WAITING ROOM HELPERS
+    // ─────────────────────────────────────────────────────────
+
+    private void ShowWaitingRoom(string roomId, bool isHost)
+    {
+        ShowScreen(_waitingScreen);
+        if (_lblRoomId    != null) _lblRoomId.text    = "#" + roomId;
+        if (_lblBigRoomId != null) _lblBigRoomId.text = "#" + roomId;
+        // Show commit panel only when roster is locked
+        _commitPanel?.AddToClassList("hidden");
+        RefreshWaitingButtons();
+        Web3Manager.Instance?.RefreshRoomState();
+    }
+
+    private void RefreshWaitingButtons()
+    {
+        bool isHost = Web3Manager.Instance?.IsHost ?? false;
+        int  state  = Web3Manager.Instance?.ActiveRoomState ?? -1;
+
+        bool isOpen      = state == (int)Web3Manager.RoomState.Open;
+        bool isCommitted = state == (int)Web3Manager.RoomState.Committed;
+        bool isLive      = state == (int)Web3Manager.RoomState.Live;
+
+        _btnLockRoster?.SetEnabled(isHost && isOpen);
+        _btnCommit?.SetEnabled(isCommitted);
+        _btnCancelRoom?.SetEnabled(isHost && isOpen);
+        _btnDeclareWinner?.SetEnabled(isHost && isLive);
+
+        // Show/hide commit panel (new v10 element)
+        if (_commitPanel != null)
+        {
+            if (isCommitted) _commitPanel.RemoveFromClassList("hidden");
+            else             _commitPanel.AddToClassList("hidden");
+        }
+
+        // Update commit fee display
+        if (_lblCommitFee != null && isCommitted)
+            _lblCommitFee.text = _selectedFee.ToString("F4", CultureInfo.InvariantCulture) + " AVAX";
+
+        if (_lblCommitCountdown != null)
+            _lblCommitCountdown.style.display = isCommitted
+                ? UnityEngine.UIElements.DisplayStyle.Flex
+                : UnityEngine.UIElements.DisplayStyle.None;
+    }
+
+    private IEnumerator RunCountdown()
+    {
+        _countdownRunning = true;
+        while (true)
+        {
+            long now  = (long)(System.DateTimeOffset.UtcNow.ToUnixTimeSeconds());
+            long left = (long)_commitDeadlineUnix - now;
+            if (left <= 0)
+            {
+                if (_lblCommitCountdown != null) _lblCommitCountdown.text = "EXPIRED";
+                break;
+            }
+            long m = left / 60;
+            long s = left % 60;
+            if (_lblCommitCountdown != null)
+                _lblCommitCountdown.text = $"{m}:{s:D2}";
+            yield return new WaitForSeconds(1f);
+        }
+        _countdownRunning = false;
+    }
+
+    // ─────────────────────────────────────────────────────────
+    // UTILS
+    // ─────────────────────────────────────────────────────────
+
+    private void UpdatePrizePreview()
+    {
+        if (_lblPrizePreview == null) return;
+        float prize = _selectedFee * _selectedMaxPlayers * 0.95f;
+        // FIX: Ensure UI output also safely bypasses comma issues
+        _lblPrizePreview.text = prize.ToString("F3", CultureInfo.InvariantCulture) + " AVAX";
+    }
+
+    private static string ShortAddr(string addr)
+    {
+        if (string.IsNullOrEmpty(addr) || addr.Length < 10) return addr ?? "—";
+        return addr[..6] + "..." + addr[^4..];
+    }
+
+    private static string FormatPrize(string feeEth, int players)
+    {
+        // FIX: Ensure NumberStyles and InvariantCulture are used when parsing strings from JS
+        if (float.TryParse(feeEth, NumberStyles.Any, CultureInfo.InvariantCulture, out float f))
+            return (f * players * 0.95f).ToString("F3", CultureInfo.InvariantCulture);
+        return "?";
+    }
+
+    private static string StateLabel(int state) => state switch
+    {
+        0 => "OPEN — Waiting for players",
+        1 => "COMMITTED — Pay entry fee!",
+        2 => "LIVE 🎮",
+        3 => "VOIDED",
+        4 => "FINISHED 🏆",
+        5 => "CANCELLED",
+        _ => "—"
+    };
+
+    private static void SetButtonEnabled(Button btn, bool enabled, string label)
+    {
+        if (btn == null) return;
+        btn.SetEnabled(enabled);
+        btn.text = label;
+    }
+}

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Lootopoly UI | combat-frame.svg — Unity UI Toolkit compatible  -->
+<!-- Usage: background-image on #Panel_Combat                       -->
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="360" viewBox="0 0 480 360">
+  <defs>
+    <radialGradient id="combat-glow" cx="50%" cy="10%" r="55%">
+      <stop offset="0%"   stop-color="#c83020" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#c83020" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="combat-bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#1e0808" stop-opacity="0.99"/>
+      <stop offset="100%" stop-color="#080404" stop-opacity="0.99"/>
+    </linearGradient>
+    <linearGradient id="combat-top-shine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#e04e38" stop-opacity="0"/>
+      <stop offset="30%"  stop-color="#ff7060" stop-opacity="0.7"/>
+      <stop offset="70%"  stop-color="#ff7060" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#e04e38" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="480" height="360" rx="16" fill="url(#combat-bg)"/>
+  <rect width="480" height="360" rx="16" fill="url(#combat-glow)"/>
+  <!-- Red border -->
+  <rect width="480" height="360" rx="16" fill="none"
+        stroke="#c83020" stroke-width="2.5" stroke-opacity="0.8"/>
+  <!-- Top shimmer line -->
+  <line x1="32" y1="1.25" x2="448" y2="1.25" stroke="url(#combat-top-shine)" stroke-width="2"/>
+  <!-- Inner border -->
+  <rect x="5" y="5" width="470" height="350" rx="12" fill="none"
+        stroke="#ff4030" stroke-width="0.5" stroke-opacity="0.12"/>
+  <!-- Corner ticks — red -->
+  <path d="M 16,0 L 16,10 M 0,16 L 10,16"   stroke="#e04e38" stroke-width="1.5" stroke-opacity="0.9"/>
+  <path d="M 464,0 L 464,10 M 480,16 L 470,16" stroke="#e04e38" stroke-width="1.5" stroke-opacity="0.9"/>
+  <path d="M 16,360 L 16,350 M 0,344 L 10,344" stroke="#e04e38" stroke-width="1.5" stroke-opacity="0.9"/>
+  <path d="M 464,360 L 464,350 M 480,344 L 470,344" stroke="#e04e38" stroke-width="1.5" stroke-opacity="0.9"/>
+</svg>

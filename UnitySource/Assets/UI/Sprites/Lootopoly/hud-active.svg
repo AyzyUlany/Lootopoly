@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Lootopoly UI | hud-active.svg — Unity UI Toolkit compatible    -->
+<!-- Usage: background-image on .hud-container.hud-active           -->
+<svg xmlns="http://www.w3.org/2000/svg" width="272" height="130" viewBox="0 0 272 130">
+  <defs>
+    <linearGradient id="hud-active-bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#241808" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#0e0904" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="hud-active-top" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#e8b84b" stop-opacity="0"/>
+      <stop offset="30%"  stop-color="#ffe060" stop-opacity="0.9"/>
+      <stop offset="70%"  stop-color="#ffe060" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#e8b84b" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="active-glow" cx="50%" cy="0%" r="70%">
+      <stop offset="0%"   stop-color="#c9922a" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#c9922a" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="272" height="130" rx="14" fill="url(#hud-active-bg)"/>
+  <rect width="272" height="130" rx="14" fill="url(#active-glow)"/>
+  <!-- Active gold border -->
+  <rect width="272" height="130" rx="14" fill="none"
+        stroke="#ffc832" stroke-width="2.5" stroke-opacity="0.9"/>
+  <!-- Top shimmer -->
+  <line x1="14" y1="1.25" x2="258" y2="1.25" stroke="url(#hud-active-top)" stroke-width="2"/>
+  <!-- Corner ticks TL -->
+  <path d="M 14,0 L 14,9 M 0,14 L 9,14" stroke="#ffe060" stroke-width="2" stroke-opacity="0.9"/>
+  <!-- Corner ticks TR -->
+  <path d="M 258,0 L 258,9 M 272,14 L 263,14" stroke="#ffe060" stroke-width="2" stroke-opacity="0.9"/>
+  <!-- Divider -->
+  <line x1="12" y1="96" x2="260" y2="96" stroke="#c9922a" stroke-width="1" stroke-opacity="0.18"/>
+</svg>

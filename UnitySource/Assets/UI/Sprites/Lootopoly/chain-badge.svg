@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Lootopoly UI | chain-badge.svg — Unity UI Toolkit compatible   -->
+<!-- Usage: background-image on the chain status pill in the header -->
+<svg xmlns="http://www.w3.org/2000/svg" width="130" height="28" viewBox="0 0 130 28">
+  <defs>
+    <linearGradient id="badge-bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#1a3830" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#0e2420" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+  <rect width="130" height="28" rx="5" fill="url(#badge-bg)"/>
+  <rect width="130" height="28" rx="5" fill="none"
+        stroke="#3db89e" stroke-width="1" stroke-opacity="0.55"/>
+  <!-- Status dot -->
+  <circle cx="12" cy="14" r="4" fill="#3db89e" fill-opacity="0.9"/>
+  <!-- Pulse ring -->
+  <circle cx="12" cy="14" r="6.5" fill="none"
+          stroke="#3db89e" stroke-width="1" stroke-opacity="0.3"/>
+</svg>

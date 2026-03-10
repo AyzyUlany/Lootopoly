@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Lootopoly UI Mockup | Unity VectorGraphics-safe SVG -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="2668" height="1604" viewBox="0 0 2668 1604">
+<defs>
+
+  <pattern id="grid-pat" width="60" height="60" patternUnits="userSpaceOnUse">
+    <path d="M 60 0 L 0 0 0 60" fill="none"
+          stroke="#c9922a" stroke-width="0.5" opacity="0.04"/>
+  </pattern>
+
+  <pattern id="scanlines" width="4" height="4" patternUnits="userSpaceOnUse">
+    <rect width="4" height="2" fill="black" opacity="0.06"/>
+  </pattern>
+
+  <linearGradient id="btn-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%"   stop-color="#c9922a"/>
+    <stop offset="50%"  stop-color="#e8b84b"/>
+    <stop offset="100%" stop-color="#c9922a"/>
+  </linearGradient>
+
+  <linearGradient id="top-shimmer" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%"   stop-color="#c9922a" stop-opacity="0"/>
+    <stop offset="50%"  stop-color="#c9922a" stop-opacity="0.55"/>
+    <stop offset="100%" stop-color="#c9922a" stop-opacity="0"/>
+  </linearGradient>
+
+  <linearGradient id="room-accent" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%"   stop-color="#c9922a"/>
+    <stop offset="100%" stop-color="#e8b84b"/>
+  </linearGradient>
+
+  <radialGradient id="glow-gold" cx="50%" cy="50%" r="50%">
+    <stop offset="0%"   stop-color="#c9922a" stop-opacity="0.07"/>
+    <stop offset="100%" stop-color="#c9922a" stop-opacity="0"/>
+  </radialGradient>
+
+  <radialGradient id="glow-teal" cx="50%" cy="50%" r="50%">
+    <stop offset="0%"   stop-color="#2a8b7a" stop-opacity="0.05"/>
+    <stop offset="100%" stop-color="#2a8b7a" stop-opacity="0"/>
+  </radialGradient>
+
+  <radialGradient id="game-glow-g" cx="30%" cy="40%" r="60%">
+    <stop offset="0%"   stop-color="#c9922a"  stop-opacity="0.08"/>
+    <stop offset="100%" stop-color="#c9922a"  stop-opacity="0"/>
+  </radialGradient>
+
+  <radialGradient id="game-glow-t" cx="70%" cy="60%" r="60%">
+    <stop offset="0%"   stop-color="#2a8b7a"  stop-opacity="0.06"/>
+    <stop offset="100%" stop-color="#2a8b7a"  stop-opacity="0"/>
+  </radialGradient>
+
+  <clipPath id="sc1">
+    <rect x="36" y="64" width="1280" height="720" rx="4"/>
+  </clipPath>
+
+  <clipPath id="sc2">
+    <rect x="1352" y="64" width="1280" height="720" rx="4"/>
+  </clipPath>
+
+  <clipPath id="sc3">
+    <rect x="36" y="848" width="1280" height="720" rx="4"/>
+  </clipPath>
+
+  <clipPath id="sc4">
+    <rect x="1352" y="848" width="1280" height="720" rx="4"/>
+  </clipPath>
+</defs>
+<rect x="0" y="0" width="2668" height="1604" fill="#030202"/>
+<line x1="0" y1="1604" x2="2668" y2="0" stroke="#c9922a" stroke-width="0.5" opacity="0.03"/>
+<rect x="34" y="62" width="1284" height="724" fill="none" rx="6" stroke="#c9922a" stroke-width="0.5" opacity="0.22"/>
+<text x="36" y="54" fill="#c9922a" font-size="9" font-weight="600" text-anchor="start" font-family="Cinzel,'Times New Roman',serif" letter-spacing="4" opacity="0.65">SCREEN 1  |  CONNECT WALLET</text>
+<g id="screen-1" clip-path="url(#sc1)">
+<rect x="36" y="64" width="1280" height="720" fill="#060404"/>
+<rect x="36" y="64" width="1280" height="720" fill="url(#grid-pat)"/>
+<ellipse cx="317" cy="265" rx="486" ry="302" fill="url(#glow-gold)"/>
+<ellipse cx="1034" cy="582" rx="486" ry="302" fill="url(#glow-teal)"/>
+<rect x="36" y="64" width="1280" height="68" fill="#060404"/>
+<line x1="36" y1="132" x2="1316" y2="132" stroke="#e8b84b" stroke-width="1" opacity="0.35"/>
+<text x="58" y="108" fill="#e8b84b" font-size="18" font-weight="bold" text-anchor="start" font-family="Cinzel,'Times New Roman',serif">|</text>
+<text x="88" y="108" fill="#e8b84b" font-size="18" font-weight="700" text-anchor="start" font-family="Cinzel,'Times New Roman',serif" letter-spacing="2">LOOTOPOLY</text>
+<rect x="1014" y="84" width="130" height="28" fill="#2a8b7a" rx="3" fill-opacity="0.1"/>
+<rect x="1014" y="84" width="130" height="28" fill="#3db89e" rx="3" stroke="#3db89e" stroke-width="1" opacity="0.35"/>
+<text x="1079" y="102" fill="#3db89e" font-size="10" font-weight="600" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif" letter-spacing="3">AVAX  FUJI</text>
+<rect x="1154" y="83" width="44" height="30" fill="none" rx="4" stroke="#c9922a" stroke-width="1" opacity="0.28"/>
+<text x="1176" y="103" fill="#b0a898" font-size="12" font-weight="normal" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif">~</text>
+<rect x="1206" y="81" width="100" height="34" fill="url(#btn-grad)" rx="5"/>
+<rect x="1206" y="81" width="100" height="34" fill="none" rx="5" stroke="#e8b84b" stroke-width="1" opacity="0.6"/>
+<text x="1256" y="102" fill="#1a1200" font-size="10" font-weight="700" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif" letter-spacing="1">Connect Wallet</text>
+<rect x="632" y="178" width="88" height="88" fill="#1a1612" rx="12"/>
+<rect x="632" y="178" width="88" height="88" fill="none" rx="12" stroke="#e8b84b" stroke-width="2" opacity="0.7"/>
+<circle cx="654" cy="200" r="6" fill="#e8b84b"/>
+<circle cx="698" cy="200" r="6" fill="#e8b84b"/>
+<circle cx="676" cy="222" r="6" fill="#e8b84b"/>
+<circle cx="654" cy="244" r="6" fill="#e8b84b"/>
+<circle cx="698" cy="244" r="6" fill="#e8b84b"/>
+<circle cx="676" cy="222" r="64" fill="none" stroke="#c9922a" stroke-width="1" opacity="0.08"/>
+<circle cx="676" cy="222" r="80" fill="none" stroke="#c9922a" stroke-width="0.5" opacity="0.05"/>
+<text x="676" y="324" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif" font-size="46" font-weight="700"><tspan fill="#ffffff">Ready to </tspan><tspan fill="#e8b84b">Plunder?</tspan></text>
+<text x="676" y="358" fill="#8a8070" font-size="15" font-weight="normal" text-anchor="middle" font-family="'Crimson Pro',Georgia,serif" font-style="italic">Connect your wallet to create or join a room.</text>
+<text x="676" y="379" fill="#8a8070" font-size="14" font-weight="normal" text-anchor="middle" font-family="'Crimson Pro',Georgia,serif" font-style="italic">Entry fees fund the prize pool — last one standing claims it all.</text>
+<circle cx="296" cy="421" r="4" fill="#c9922a" opacity="0.8"/>
+<text x="308" y="426" fill="#8a8070" font-size="12" font-weight="600" text-anchor="start" font-family="Cinzel,'Times New Roman',serif" letter-spacing="1">On-chain rooms</text>
+<circle cx="496" cy="421" r="4" fill="#c9922a" opacity="0.8"/>
+<text x="508" y="426" fill="#8a8070" font-size="12" font-weight="600" text-anchor="start" font-family="Cinzel,'Times New Roman',serif" letter-spacing="1">Winner-takes-all prize</text>
+<circle cx="696" cy="421" r="4" fill="#c9922a" opacity="0.8"/>
+<text x="708" y="426" fill="#8a8070" font-size="12" font-weight="600" text-anchor="start" font-family="Cinzel,'Times New Roman',serif" letter-spacing="1">2-4 players</text>
+<circle cx="896" cy="421" r="4" fill="#c9922a" opacity="0.8"/>
+<text x="908" y="426" fill="#8a8070" font-size="12" font-weight="600" text-anchor="start" font-family="Cinzel,'Times New Roman',serif" letter-spacing="1">Avalanche C-Chain</text>
+<rect x="516" y="450" width="320" height="58" fill="url(#btn-grad)" rx="6"/>
+<rect x="516" y="450" width="320" height="58" fill="none" rx="6" stroke="#e8b84b" stroke-width="1" opacity="0.65"/>
+<rect x="519" y="509" width="314" height="4" fill="#3c1e00" rx="2" opacity="0.65"/>
+<text x="676" y="485" fill="#1a1200" font-size="12" font-weight="700" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif" letter-spacing="2">[ ] CONNECT METAMASK</text>
+<text x="676" y="530" fill="#6a6050" font-size="11" font-weight="normal" text-anchor="middle" font-family="'Crimson Pro',Georgia,serif" font-style="italic">Requires MetaMask or WalletConnect  |  Avalanche C-Chain</text>
+<line x1="116" y1="550" x2="496" y2="550" stroke="#c9922a" stroke-width="0.5" opacity="0.18"/>
+<line x1="856" y1="550" x2="1236" y2="550" stroke="#c9922a" stroke-width="0.5" opacity="0.18"/>
+<circle cx="676" cy="550" r="3" fill="#c9922a" opacity="0.18"/>
+</g>
+<rect x="1350" y="62" width="1284" height="724" fill="none" rx="6" stroke="#c9922a" stroke-width="0.5" opacity="0.22"/>
+<text x="1352" y="54" fill="#c9922a" font-size="9" font-weight="600" text-anchor="start" font-family="Cinzel,'Times New Roman',serif" letter-spacing="4" opacity="0.65">SCREEN 2  |  LOBBY</text>
+<g id="screen-2" clip-path="url(#sc2)">
+<rect x="1352" y="64" width="1280" height="720" fill="#060404"/>
+<rect x="1352" y="64" width="1280" height="720" fill="url(#grid-pat)"/>
+<ellipse cx="1633" cy="265" rx="486" ry="302" fill="url(#glow-gold)"/>
+<ellipse cx="2350" cy="582" rx="486" ry="302" fill="url(#glow-teal)"/>
+<rect x="1352" y="64" width="1280" height="68" fill="#060404"/>
+<line x1="1352" y1="132" x2="2632" y2="132" stroke="#e8b84b" stroke-width="1" opacity="0.35"/>
+<text x="1374" y="108" fill="#e8b84b" font-size="18" font-weight="bold" text-anchor="start" font-family="Cinzel,'Times New Roman',serif">|</text>
+<text x="1404" y="108" fill="#e8b84b" font-size="18" font-weight="700" text-anchor="start" font-family="Cinzel,'Times New Roman',serif" letter-spacing="2">LOOTOPOLY</text>
+<rect x="2330" y="84" width="130" height="28" fill="#2a8b7a" rx="3" fill-opacity="0.1"/>
+<rect x="2330" y="84" width="130" height="28" fill="#3db89e" rx="3" stroke="#3db89e" stroke-width="1" opacity="0.35"/>
+<text x="2395" y="102" fill="#3db89e" font-size="10" font-weight="600" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif" letter-spacing="3">AVAX  FUJI</text>
+<rect x="2470" y="83" width="44" height="30" fill="none" rx="4" stroke="#c9922a" stroke-width="1" opacity="0.28"/>
+<text x="2492" y="103" fill="#b0a898" font-size="12" font-weight="normal" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif">~</text>
+<rect x="2522" y="83" width="98" height="30" fill="#1a1612" rx="4" stroke="#c9922a" stroke-width="1" opacity="0.35"/>
+<text x="2571" y="102" fill="#b0a898" font-size="9" font-weight="normal" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif">0xA3c4...9F2e</text>
+<rect x="1376" y="152" width="299" height="64" fill="#111009" rx="4"/>
+<rect x="1376" y="152" width="299" height="64" fill="none" rx="4" stroke="#c9922a" stroke-width="1" opacity="0.15"/>
+<text x="1390" y="170" fill="#6a6050" font-size="8" font-weight="600" text-anchor="start" font-family="Cinzel,'Times New Roman',serif" letter-spacing="3">YOUR BALANCE</text>
+<text x="1390" y="198" fill="#e04e38" font-size="20" font-weight="700" text-anchor="start" font-family="Cinzel,'Times New Roman',serif">2.847 AVAX</text>
+<rect x="1687" y="152" width="299" height="64" fill="#111009" rx="4"/>
+<rect x="1687" y="152" width="299" height="64" fill="none" rx="4" stroke="#c9922a" stroke-width="1" opacity="0.15"/>
+<text x="1701" y="170" fill="#6a6050" font-size="8" font-weight="600" text-anchor="start" font-family="Cinzel,'Times New Roman',serif" letter-spacing="3">OPEN ROOMS</text>
+<text x="1701" y="198" fill="#b0a898" font-size="20" font-weight="700" text-anchor="start" font-family="Cinzel,'Times New Roman',serif">4</text>
+<rect x="1998" y="152" width="299" height="64" fill="#111009" rx="4"/>
+<rect x="1998" y="152" width="299" height="64" fill="none" rx="4" stroke="#c9922a" stroke-width="1" opacity="0.15"/>
+<text x="2012" y="170" fill="#6a6050" font-size="8" font-weight="600" text-anchor="start" font-family="Cinzel,'Times New Roman',serif" letter-spacing="3">TOTAL ROOMS</text>
+<text x="2012" y="198" fill="#3db89e" font-size="20" font-weight="700" text-anchor="start" font-family="Cinzel,'Times New Roman',serif">47</text>
+<rect x="2309" y="152" width="299" height="64" fill="#111009" rx="4"/>
+<rect x="2309" y="152" width="299" height="64" fill="none" rx="4" stroke="#c9922a" stroke-width="1" opacity="0.15"/>
+<text x="2323" y="170" fill="#6a6050" font-size="8" font-weight="600" text-anchor="start" font-family="Cinzel,'Times New Roman',serif" letter-spacing="3">CLAIMABLE</text>
+<text x="2323" y="198" fill="#e8b84b" font-size="20" font-weight="700" text-anchor="start" font-family="Cinzel,'Times New Roman',serif">0.3200 AVAX</text>
+<text x="2323" y="210" fill="#6a6050" font-size="8" font-weight="normal" text-anchor="start" font-family="'Crimson Pro',Georgia,serif" font-style="italic">tap to withdraw</text>
+<text x="1376" y="246" fill="#e8b84b" font-size="11" font-weight="600" text-anchor="start" font-family="Cinzel,'Times New Roman',serif" letter-spacing="3">[ ] OPEN ROOMS</text>
+<rect x="1521" y="234" width="60" height="20" fill="#2a8b7a" rx="2" fill-opacity="0.14"/>
+<rect x="1521" y="234" width="60" height="20" fill="none" rx="2" stroke="#3db89e" stroke-width="1" opacity="0.38"/>
+<text x="1551" y="248" fill="#3db89e" font-size="9" font-weight="600" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif" letter-spacing="2">4 OPEN</text>
+<rect x="2162" y="228" width="84" height="26" fill="none" rx="4" stroke="#c9922a" stroke-width="1" opacity="0.35"/>
+<text x="2204" y="247" fill="#b0a898" font-size="11" font-weight="600" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif" letter-spacing="2">~ REFRESH</text>
+<rect x="1376" y="258" width="876" height="80" fill="#1a1612" rx="8" opacity="1.0"/>
+<rect x="1376" y="258" width="876" height="80" fill="#c9922a" rx="8" opacity="1.0" fill-opacity="0.05"/>
+<rect x="1376" y="258" width="876" height="80" fill="none" rx="8" stroke="#c9922a" stroke-width="1" opacity="0.32"/>
+<rect x="1376" y="262" width="3" height="72" fill="url(#room-accent)" rx="2" opacity="1.0"/>
+<text x="1394" y="275" fill="#6a6050" font-size="9" font-weight="600" text-anchor="start" font-family="Cinzel,'Times New Roman',serif" letter-spacing="2">ROOM #7  |  HOST: 0xA3c4...9F2e</text>
+<rect x="1553" y="263" width="39" height="20" fill="#c9922a" rx="2" fill-opacity="0.14"/>
+<rect x="1553" y="263" width="39" height="20" fill="none" rx="2" stroke="#e8b84b" stroke-width="1" opacity="0.38"/>
+<text x="1572" y="277" fill="#e8b84b" font-size="9" font-weight="600" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif" letter-spacing="2">YOU</text>
+<text x="1394" y="301" fill="#ffffff" font-size="22" font-weight="700" text-anchor="start" font-family="Cinzel,'Times New Roman',serif">0.050</text>
+<text x="1463" y="301" fill="#e04e38" font-size="11" font-weight="600" text-anchor="start" font-family="Cinzel,'Times New Roman',serif">AVAX</text>
+<rect x="1394" y="310" width="144" height="20" fill="#c9922a" rx="2" fill-opacity="0.14"/>
+<rect x="1394" y="310" width="144" height="20" fill="none" rx="2" stroke="#e8b84b" stroke-width="1" opacity="0.38"/>
+<text x="1466" y="324" fill="#e8b84b" font-size="9" font-weight="600" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif" letter-spacing="2">Prize: ~0.095 AVAX</text>
+<rect x="1545" y="310" width="95" height="20" fill="#2a8b7a" rx="2" fill-opacity="0.14"/>
+<rect x="1545" y="310" width="95" height="20" fill="none" rx="2" stroke="#3db89e" stroke-width="1" opacity="0.38"/>
+<text x="1592" y="324" fill="#3db89e" font-size="9" font-weight="600" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif" letter-spacing="2">Bond: 0.005</text>
+<rect x="1647" y="310" width="46" height="20" fill="#2a8b7a" rx="2" fill-opacity="0.14"/>
+<rect x="1647" y="310" width="46" height="20" fill="none" rx="2" stroke="#3db89e" stroke-width="1" opacity="0.38"/>
+<text x="1670" y="324" fill="#3db89e" font-size="9" font-weight="600" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif" letter-spacing="2">OPEN</text>
+<circle cx="2128" cy="280" r="5" fill="#3db89e" stroke="#3db89e" stroke-width="0.5"/>
+<circle cx="2128" cy="280" r="7" fill="none" stroke="#3db89e" stroke-width="1" opacity="0.3"/>
+<circle cx="2144" cy="280" r="5" fill="#1a1612" stroke="#6a6050" stroke-width="1.5" opacity="0.4"/>
+<text x="2166" y="285" fill="#6a6050" font-size="10" font-weight="normal" text-anchor="start" font-family="Cinzel,'Times New Roman',serif">1/2</text>
+<rect x="2152" y="283" width="90" height="30" fill="#2a8b7a" rx="4" fill-opacity="0.15"/>
+<rect x="2152" y="283" width="90" height="30" fill="none" rx="4" stroke="#3db89e" stroke-width="1" opacity="0.4"/>
+<text x="2197" y="304" fill="#3db89e" font-size="11" font-weight="600" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif" letter-spacing="1">VIEW +</text>
+<rect x="1376" y="346" width="876" height="80" fill="#1a1612" rx="8" opacity="1.0"/>
+<rect x="1376" y="346" width="876" height="80" fill="none" rx="8" stroke="#c9922a" stroke-width="1" opacity="0.13"/>
+<text x="1394" y="363" fill="#6a6050" font-size="9" font-weight="600" text-anchor="start" font-family="Cinzel,'Times New Roman',serif" letter-spacing="2">ROOM #12  |  HOST: 0xBb71...3d4a</text>
+<text x="1394" y="389" fill="#ffffff" font-size="22" font-weight="700" text-anchor="start" font-family="Cinzel,'Times New Roman',serif">0.100</text>
+<text x="1463" y="389" fill="#e04e38" font-size="11" font-weight="600" text-anchor="start" font-family="Cinzel,'Times New Roman',serif">AVAX</text>
+<rect x="1394" y="398" width="144" height="20" fill="#c9922a" rx="2" fill-opacity="0.14"/>
+<rect x="1394" y="398" width="144" height="20" fill="none" rx="2" stroke="#e8b84b" stroke-width="1" opacity="0.38"/>
+<text x="1466" y="412" fill="#e8b84b" font-size="9" font-weight="600" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif" letter-spacing="2">Prize: ~0.285 AVAX</text>
+<rect x="1545" y="398" width="95" height="20" fill="#2a8b7a" rx="2" fill-opacity="0.14"/>
+<rect x="1545" y="398" width="95" height="20" fill="none" rx="2" stroke="#3db89e" stroke-width="1" opacity="0.38"/>
+<text x="1592" y="412" fill="#3db89e" font-size="9" font-weight="600" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif" letter-spacing="2">Bond: 0.010</text>
+<rect x="1647" y="398" width="46" height="20" fill="#2a8b7a" rx="2" fill-opacity="0.14"/>
+<rect x="1647" y="398" width="46" height="20" fill="none" rx="2" stroke="#3db89e" stroke-width="1" opacity="0.38"/>
+<text x="1670" y="412" fill="#3db89e" font-size="9" font-weight="600" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif" letter-spacing="2">OPEN</text>
+<circle cx="2128" cy="368" r="5" fill="#3db89e" stroke="#3db89e" stroke-width="0.5"/>
+<circle cx="2128" cy="368" r="7" fill="none" stroke="#3db89e" stroke-width="1" opacity="0.3"/>
+<circle cx="2144" cy="368" r="5" fill="#3db89e" stroke="#3db89e" stroke-width="0.5"/>
+<circle cx="2144" cy="368" r="7" fill="none" stroke="#3db89e" stroke-width="1" opacity="0.3"/>
+<circle cx="2160" cy="368" r="5" fill="#1a1612" stroke="#6a6050" stroke-width="1.5" opacity="0.4"/>
+<text x="2182" y="373" fill="#6a6050" font-size="10" font-weight="normal" text-anchor="start" font-family="Cinzel,'Times New Roman',serif">2/3</text>
+<rect x="2152" y="371" width="90" height="30" fill="#2a8b7a" rx="4" fill-opacity="0.15"/>
+<rect x="2152" y="371" width="90" height="30" fill="none" rx="4" stroke="#3db89e" stroke-width="1" opacity="0.4"/>
+<text x="2197" y="392" fill="#3db89e" font-size="11" font-weight="600" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif" letter-spacing="1">JOIN +</text>
+<rect x="1376" y="434" width="876" height="80" fill="#1a1612" rx="8" opacity="0.48"/>
+<rect x="1376" y="434" width="876" height="80" fill="none" rx="8" stroke="#c9922a" stroke-width="1" opacity="0.0624"/>
+<text x="1394" y="451" fill="#6a6050" font-size="9" font-weight="600" text-anchor="start" font-family="Cinzel,'Times New Roman',serif" letter-spacing="2" opacity="0.48">ROOM #19  |  HOST: 0xF4e2...88cc</text>
+<text x="1394" y="477" fill="#ffffff" font-size="22" font-weight="700" text-anchor="start" font-family="Cinzel,'Times New Roman',serif" opacity="0.48">0.500</text>
+<text x="1463" y="477" fill="#e04e38" font-size="11" font-weight="600" text-anchor="start" font-family="Cinzel,'Times New Roman',serif" opacity="0.48">AVAX</text>
+<rect x="1394" y="486" width="144" height="20" fill="#c9922a" rx="2" fill-opacity="0.14"/>
+<rect x="1394" y="486" width="144" height="20" fill="none" rx="2" stroke="#e8b84b" stroke-width="1" opacity="0.38"/>
+<text x="1466" y="500" fill="#e8b84b" font-size="9" font-weight="600" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif" letter-spacing="2">Prize: ~1.900 AVAX</text>
+<rect x="1545" y="486" width="95" height="20" fill="#2a8b7a" rx="2" fill-opacity="0.14"/>
+<rect x="1545" y="486" width="95" height="20" fill="none" rx="2" stroke="#3db89e" stroke-width="1" opacity="0.38"/>
+<text x="1592" y="500" fill="#3db89e" font-size="9" font-weight="600" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif" letter-spacing="2">Bond: 0.050</text>
+<rect x="1647" y="486" width="46" height="20" fill="#b83a2a" rx="2" fill-opacity="0.14"/>
+<rect x="1647" y="486" width="46" height="20" fill="none" rx="2" stroke="#e04e38" stroke-width="1" opacity="0.38"/>
+<text x="1670" y="500" fill="#e04e38" font-size="9" font-weight="600" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif" letter-spacing="2">FULL</text>
+<circle cx="2128" cy="456" r="5" fill="#3db89e" stroke="#3db89e" stroke-width="0.5"/>
+<circle cx="2128" cy="456" r="7" fill="none" stroke="#3db89e" stroke-width="1" opacity="0.3"/>
+<circle cx="2144" cy="456" r="5" fill="#3db89e" stroke="#3db89e" stroke-width="0.5"/>
+<circle cx="2144" cy="456" r="7" fill="none" stroke="#3db89e" stroke-width="1" opacity="0.3"/>
+<circle cx="2160" cy="456" r="5" fill="#3db89e" stroke="#3db89e" stroke-width="0.5"/>
+<circle cx="2160" cy="456" r="7" fill="none" stroke="#3db89e" stroke-width="1" opacity="0.3"/>
+<circle cx="2176" cy="456" r="5" fill="#3db89e" stroke="#3db89e" stroke-width="0.5"/>
+<circle cx="2176" cy="456" r="7" fill="none" stroke="#3db89e" stroke-width="1" opacity="0.3"/>
+<text x="2198" y="461" fill="#6a6050" font-size="10" font-weight="normal" text-anchor="start" font-family="Cinzel,'Times New Roman',serif" opacity="0.48">4/4</text>
+<rect x="2152" y="459" width="90" height="30" fill="#111009" rx="4" opacity="0.5"/>
+<text x="2197" y="478" fill="#6a6050" font-size="10" font-weight="600" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif">FULL</text>
+<rect x="1376" y="522" width="876" height="80" fill="#1a1612" rx="8" opacity="1.0"/>
+<rect x="1376" y="522" width="876" height="80" fill="none" rx="8" stroke="#c9922a" stroke-width="1" opacity="0.13"/>
+<text x="1394" y="539" fill="#6a6050" font-size="9" font-weight="600" text-anchor="start" font-family="Cinzel,'Times New Roman',serif" letter-spacing="2">ROOM #23  |  HOST: 0x9a1d...2f77</text>
+<text x="1394" y="565" fill="#ffffff" font-size="22" font-weight="700" text-anchor="start" font-family="Cinzel,'Times New Roman',serif">0.100</text>
+<text x="1463" y="565" fill="#e04e38" font-size="11" font-weight="600" text-anchor="start" font-family="Cinzel,'Times New Roman',serif">AVAX</text>
+<rect x="1394" y="574" width="144" height="20" fill="#c9922a" rx="2" fill-opacity="0.14"/>
+<rect x="1394" y="574" width="144" height="20" fill="none" rx="2" stroke="#e8b84b" stroke-width="1" opacity="0.38"/>
+<text x="1466" y="588" fill="#e8b84b" font-size="9" font-weight="600" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif" letter-spacing="2">Prize: ~0.190 AVAX</text>
+<rect x="1545" y="574" width="95" height="20" fill="#2a8b7a" rx="2" fill-opacity="0.14"/>
+<rect x="1545" y="574" width="95" height="20" fill="none" rx="2" stroke="#3db89e" stroke-width="1" opacity="0.38"/>
+<text x="1592" y="588" fill="#3db89e" font-size="9" font-weight="600" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif" letter-spacing="2">Bond: 0.010</text>
+<rect x="1647" y="574" width="46" height="20" fill="#2a8b7a" rx="2" fill-opacity="0.14"/>
+<rect x="1647" y="574" width="46" height="20" fill="none" rx="2" stroke="#3db89e" stroke-width="1" opacity="0.38"/>
+<text x="1670" y="588" fill="#3db89e" font-size="9" font-weight="600" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif" letter-spacing="2">OPEN</text>
+<circle cx="2128" cy="544" r="5" fill="#3db89e" stroke="#3db89e" stroke-width="0.5"/>
+<circle cx="2128" cy="544" r="7" fill="none" stroke="#3db89e" stroke-width="1" opacity="0.3"/>
+<circle cx="2144" cy="544" r="5" fill="#1a1612" stroke="#6a6050" stroke-width="1.5" opacity="0.4"/>
+<text x="2166" y="549" fill="#6a6050" font-size="10" font-weight="normal" text-anchor="start" font-family="Cinzel,'Times New Roman',serif">1/2</text>
+<rect x="2152" y="547" width="90" height="30" fill="#2a8b7a" rx="4" fill-opacity="0.15"/>
+<rect x="2152" y="547" width="90" height="30" fill="none" rx="4" stroke="#3db89e" stroke-width="1" opacity="0.4"/>
+<text x="2197" y="568" fill="#3db89e" font-size="11" font-weight="600" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif" letter-spacing="1">JOIN +</text>
+<rect x="2268" y="230" width="340" height="552" fill="#1a1612" rx="8"/>
+<rect x="2268" y="230" width="340" height="552" fill="none" rx="8" stroke="#c9922a" stroke-width="1" opacity="0.2"/>
+<line x1="2295" y1="230" x2="2580" y2="230" stroke="url(#top-shimmer)" stroke-width="1.5"/>
+<line x1="2284" y1="254" x2="2300" y2="254" stroke="#c9922a" stroke-width="1" opacity="0.5"/>
+<text x="2306" y="259" fill="#c9922a" font-size="9" font-weight="600" text-anchor="start" font-family="Cinzel,'Times New Roman',serif" letter-spacing="4">CREATE ROOM</text>
+<rect x="2544" y="234" width="46" height="20" fill="#b83a2a" rx="2" fill-opacity="0.14"/>
+<rect x="2544" y="234" width="46" height="20" fill="none" rx="2" stroke="#e04e38" stroke-width="1" opacity="0.38"/>
+<text x="2567" y="248" fill="#e04e38" font-size="9" font-weight="600" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif" letter-spacing="2">HOST</text>
+<text x="2284" y="282" fill="#6a6050" font-size="8" font-weight="600" text-anchor="start" font-family="Cinzel,'Times New Roman',serif" letter-spacing="3">ENTRY FEE (AVAX)</text>
+<rect x="2284" y="288" width="308" height="38" fill="#111009" rx="4"/>
+<rect x="2284" y="288" width="308" height="38" fill="none" rx="4" stroke="#e8b84b" stroke-width="1" opacity="0.38"/>
+<text x="2294" y="314" fill="#f5d070" font-size="20" font-weight="700" text-anchor="start" font-family="Cinzel,'Times New Roman',serif">0.10</text>
+<rect x="2284" y="334" width="72" height="26" fill="#111009" rx="3"/>
+<rect x="2284" y="334" width="72" height="26" fill="none" rx="3" stroke="#c9922a" stroke-width="1" opacity="0.22"/>
+<text x="2320" y="352" fill="#6a6050" font-size="11" font-weight="600" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif">0.05</text>
+<rect x="2362" y="334" width="72" height="26" fill="#c9922a" rx="3" fill-opacity="0.18"/>
+<rect x="2362" y="334" width="72" height="26" fill="none" rx="3" stroke="#e8b84b" stroke-width="1" opacity="0.65"/>
+<text x="2398" y="352" fill="#e8b84b" font-size="11" font-weight="700" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif">0.10</text>
+<rect x="2440" y="334" width="72" height="26" fill="#111009" rx="3"/>
+<rect x="2440" y="334" width="72" height="26" fill="none" rx="3" stroke="#c9922a" stroke-width="1" opacity="0.22"/>
+<text x="2476" y="352" fill="#6a6050" font-size="11" font-weight="600" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif">0.50</text>
+<rect x="2518" y="334" width="72" height="26" fill="#111009" rx="3"/>
+<rect x="2518" y="334" width="72" height="26" fill="none" rx="3" stroke="#c9922a" stroke-width="1" opacity="0.22"/>
+<text x="2554" y="352" fill="#6a6050" font-size="11" font-weight="600" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif">1.00</text>
+<text x="2284" y="382" fill="#6a6050" font-size="8" font-weight="600" text-anchor="start" font-family="Cinzel,'Times New Roman',serif" letter-spacing="3">MAX PLAYERS</text>
+<rect x="2284" y="388" width="97" height="36" fill="#111009" rx="4"/>
+<rect x="2284" y="388" width="97" height="36" fill="none" rx="4" stroke="#c9922a" stroke-width="1" opacity="0.18"/>
+<text x="2332" y="412" fill="#6a6050" font-size="20" font-weight="700" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif">2</text>
+<rect x="2389" y="388" width="97" height="36" fill="#b83a2a" rx="4" fill-opacity="0.12"/>
+<rect x="2389" y="388" width="97" height="36" fill="none" rx="4" stroke="#e04e38" stroke-width="1" opacity="0.55"/>
+<text x="2437" y="412" fill="#e04e38" font-size="20" font-weight="700" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif">3</text>
+<rect x="2494" y="388" width="97" height="36" fill="#111009" rx="4"/>
+<rect x="2494" y="388" width="97" height="36" fill="none" rx="4" stroke="#c9922a" stroke-width="1" opacity="0.18"/>
+<text x="2542" y="412" fill="#6a6050" font-size="20" font-weight="700" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif">4</text>
+<rect x="2284" y="436" width="308" height="56" fill="#c9922a" rx="4" fill-opacity="0.05"/>
+<rect x="2284" y="436" width="308" height="56" fill="none" rx="4" stroke="#c9922a" stroke-width="1" opacity="0.25"/>
+<text x="2294" y="452" fill="#6a6050" font-size="8" font-weight="600" text-anchor="start" font-family="Cinzel,'Times New Roman',serif" letter-spacing="3">WINNER PRIZE POOL</text>
+<text x="2294" y="480" fill="#e04e38" font-size="24" font-weight="700" text-anchor="start" font-family="Cinzel,'Times New Roman',serif">0.285 AVAX</text>
+<text x="2588" y="488" fill="#6a6050" font-size="9" font-weight="normal" text-anchor="end" font-family="'Crimson Pro',Georgia,serif" font-style="italic">95% of total  5% fee</text>
+<rect x="2284" y="500" width="308" height="46" fill="url(#btn-grad)" rx="6"/>
+<rect x="2284" y="500" width="308" height="46" fill="none" rx="6" stroke="#e8b84b" stroke-width="1" opacity="0.65"/>
+<rect x="2287" y="547" width="302" height="4" fill="#3c1e00" rx="2" opacity="0.65"/>
+<text x="2438" y="529" fill="#1a1200" font-size="12" font-weight="700" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif" letter-spacing="2">[+] CREATE ROOM</text>
+<rect x="2284" y="554" width="308" height="80" fill="#111009" rx="4"/>
+<rect x="2284" y="554" width="308" height="80" fill="none" rx="4" stroke="#c9922a" stroke-width="1" opacity="0.14"/>
+<text x="2294" y="570" fill="#c9922a" font-size="9" font-weight="600" text-anchor="start" font-family="Cinzel,'Times New Roman',serif" letter-spacing="4">CONTRACT INFO</text>
+<text x="2294" y="586" fill="#6a6050" font-size="10" font-weight="normal" text-anchor="start" font-family="'Crimson Pro',Georgia,serif">Address: 0xDc68...43F5f</text>
+<text x="2294" y="602" fill="#6a6050" font-size="10" font-weight="normal" text-anchor="start" font-family="'Crimson Pro',Georgia,serif">Protocol Fee: 5%   Min: 2   Max: 4</text>
+<text x="2294" y="618" fill="#3db89e" font-size="10" font-weight="normal" text-anchor="start" font-family="'Crimson Pro',Georgia,serif">Chain: Avalanche C-Chain</text>
+</g>
+<rect x="34" y="846" width="1284" height="724" fill="none" rx="6" stroke="#c9922a" stroke-width="0.5" opacity="0.22"/>
+<text x="36" y="838" fill="#c9922a" font-size="9" font-weight="600" text-anchor="start" font-family="Cinzel,'Times New Roman',serif" letter-spacing="4" opacity="0.65">SCREEN 3  |  WAITING ROOM</text>
+<g id="screen-3" clip-path="url(#sc3)">
+<rect x="36" y="848" width="1280" height="720" fill="#060404"/>
+<rect x="36" y="848" width="1280" height="720" fill="url(#grid-pat)"/>
+<ellipse cx="317" cy="1049" rx="486" ry="302" fill="url(#glow-gold)"/>
+<ellipse cx="1034" cy="1366" rx="486" ry="302" fill="url(#glow-teal)"/>
+<rect x="36" y="848" width="1280" height="68" fill="#060404"/>
+<line x1="36" y1="916" x2="1316" y2="916" stroke="#e8b84b" stroke-width="1" opacity="0.35"/>
+<text x="58" y="892" fill="#e8b84b" font-size="18" font-weight="bold" text-anchor="start" font-family="Cinzel,'Times New Roman',serif">|</text>
+<text x="88" y="892" fill="#e8b84b" font-size="18" font-weight="700" text-anchor="start" font-family="Cinzel,'Times New Roman',serif" letter-spacing="2">LOOTOPOLY</text>
+<rect x="1014" y="868" width="130" height="28" fill="#2a8b7a" rx="3" fill-opacity="0.1"/>
+<rect x="1014" y="868" width="130" height="28" fill="#3db89e" rx="3" stroke="#3db89e" stroke-width="1" opacity="0.35"/>
+<text x="1079" y="886" fill="#3db89e" font-size="10" font-weight="600" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif" letter-spacing="3">AVAX  FUJI</text>
+<rect x="1154" y="867" width="44" height="30" fill="none" rx="4" stroke="#c9922a" stroke-width="1" opacity="0.28"/>
+<text x="1176" y="887" fill="#b0a898" font-size="12" font-weight="normal" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif">~</text>
+<rect x="1206" y="867" width="98" height="30" fill="#1a1612" rx="4" stroke="#c9922a" stroke-width="1" opacity="0.35"/>
+<text x="1255" y="886" fill="#b0a898" font-size="9" font-weight="normal" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif">0xA3c4...9F2e</text>
+<rect x="60" y="934" width="882" height="616" fill="#1a1612" rx="8"/>
+<rect x="60" y="934" width="882" height="616" fill="none" rx="8" stroke="#c9922a" stroke-width="1" opacity="0.2"/>
+<line x1="130" y1="934" x2="871" y2="934" stroke="url(#top-shimmer)" stroke-width="1.5"/>
+<line x1="76" y1="958" x2="92" y2="958" stroke="#c9922a" stroke-width="1" opacity="0.5"/>
+<text x="98" y="963" fill="#c9922a" font-size="9" font-weight="600" text-anchor="start" font-family="Cinzel,'Times New Roman',serif" letter-spacing="4">YOUR ACTIVE ROOM</text>
+<text x="76" y="982" fill="#e8b84b" font-size="20" font-weight="700" text-anchor="start" font-family="Cinzel,'Times New Roman',serif">[ ] ROOM #7</text>
+<circle cx="854" cy="977" r="5" fill="#e04e38"/>
+<text x="864" y="982" fill="#e04e38" font-size="10" font-weight="600" text-anchor="start" font-family="Cinzel,'Times New Roman',serif" letter-spacing="3">WAITING</text>
+<rect x="76" y="994" width="276" height="52" fill="#111009" rx="4"/>
+<rect x="76" y="994" width="276" height="52" fill="none" rx="4" stroke="#c9922a" stroke-width="1" opacity="0.14"/>
+<text x="214" y="1010" fill="#6a6050" font-size="8" font-weight="600" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif" letter-spacing="3">ROOM ID</text>
+<text x="214" y="1034" fill="#e8b84b" font-size="17" font-weight="700" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif">#7</text>
+<rect x="362" y="994" width="276" height="52" fill="#111009" rx="4"/>
+<rect x="362" y="994" width="276" height="52" fill="none" rx="4" stroke="#c9922a" stroke-width="1" opacity="0.14"/>
+<text x="500" y="1010" fill="#6a6050" font-size="8" font-weight="600" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif" letter-spacing="3">PRIZE POOL</text>
+<text x="500" y="1034" fill="#e04e38" font-size="17" font-weight="700" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif">0.285 AVAX</text>
+<rect x="648" y="994" width="276" height="52" fill="#111009" rx="4"/>
+<rect x="648" y="994" width="276" height="52" fill="none" rx="4" stroke="#c9922a" stroke-width="1" opacity="0.14"/>
+<text x="786" y="1010" fill="#6a6050" font-size="8" font-weight="600" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif" letter-spacing="3">PLAYERS</text>
+<text x="786" y="1034" fill="#3db89e" font-size="17" font-weight="700" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif">1 / 3</text>
+<text x="76" y="1064" fill="#c9922a" font-size="9" font-weight="600" text-anchor="start" font-family="Cinzel,'Times New Roman',serif" letter-spacing="4">PLAYERS IN ROOM</text>
+<rect x="76" y="1070" width="850" height="44" fill="#c9922a" rx="8" fill-opacity="0.06"/>
+<rect x="76" y="1070" width="850" height="44" fill="none" rx="8" stroke="#c9922a" stroke-width="1" opacity="0.42"/>
+<circle cx="104" cy="1092" r="17" fill="#1a1612" stroke="#e8b84b" stroke-width="2" opacity="1.0"/>
+<text x="104" y="1098" fill="#b0a898" font-size="14" font-weight="normal" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif">W</text>
+<text x="128" y="1088" fill="#b0a898" font-size="12" font-weight="600" text-anchor="start" font-family="Cinzel,'Times New Roman',serif">0xA3c4...9F2e</text>
+<text x="128" y="1104" fill="#6a6050" font-size="10" font-weight="normal" text-anchor="start" font-family="'Crimson Pro',Georgia,serif">You - Bond paid</text>
+<rect x="840" y="1082" width="39" height="20" fill="#c9922a" rx="2" fill-opacity="0.14"/>
+<rect x="840" y="1082" width="39" height="20" fill="none" rx="2" stroke="#e8b84b" stroke-width="1" opacity="0.38"/>
+<text x="859" y="1096" fill="#e8b84b" font-size="9" font-weight="600" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif" letter-spacing="2">YOU</text>
+<rect x="76" y="1122" width="850" height="44" fill="#2a8b7a" rx="8" fill-opacity="0.07"/>
+<rect x="76" y="1122" width="850" height="44" fill="none" rx="8" stroke="#3db89e" stroke-width="1" opacity="0.38"/>
+<circle cx="104" cy="1144" r="17" fill="#1a1612" stroke="#3db89e" stroke-width="2" opacity="1.0"/>
+<text x="104" y="1150" fill="#b0a898" font-size="14" font-weight="normal" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif">S</text>
+<text x="128" y="1140" fill="#b0a898" font-size="12" font-weight="600" text-anchor="start" font-family="Cinzel,'Times New Roman',serif">0xBb71...3d4a</text>
+<text x="128" y="1156" fill="#6a6050" font-size="10" font-weight="normal" text-anchor="start" font-family="'Crimson Pro',Georgia,serif">Bond paid</text>
+<rect x="840" y="1134" width="60" height="20" fill="#2a8b7a" rx="2" fill-opacity="0.14"/>
+<rect x="840" y="1134" width="60" height="20" fill="none" rx="2" stroke="#3db89e" stroke-width="1" opacity="0.38"/>
+<text x="870" y="1148" fill="#3db89e" font-size="9" font-weight="600" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif" letter-spacing="2">JOINED</text>
+<path d="M 84,1174 L 918,1174 Q 926,1174 926,1182 L 926,1210 Q 926,1218 918,1218 L 84,1218 Q 76,1218 76,1210 L 76,1182 Q 76,1174 84,1174 Z" fill="none" stroke="#6a6050" stroke-width="1" stroke-dasharray="4,3" opacity="0.22"/>
+<rect x="76" y="1174" width="850" height="44" fill="#111009" rx="8" fill-opacity="0.5"/>
+<circle cx="104" cy="1196" r="17" fill="#1a1612" stroke="#6a6050" stroke-width="2" opacity="0.4"/>
+<text x="104" y="1202" fill="#b0a898" font-size="14" font-weight="normal" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif">-</text>
+<text x="128" y="1201" fill="#6a6050" font-size="11" font-weight="normal" text-anchor="start" font-family="'Crimson Pro',Georgia,serif" font-style="italic">Waiting for player...</text>
+<rect x="76" y="1234" width="278" height="40" fill="#2a8b7a" rx="5" fill-opacity="0.15"/>
+<rect x="76" y="1234" width="278" height="40" fill="none" rx="5" stroke="#3db89e" stroke-width="1" opacity="0.4"/>
+<text x="215" y="1260" fill="#3db89e" font-size="11" font-weight="600" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif" letter-spacing="1">[L] LOCK ROSTER</text>
+<rect x="362" y="1234" width="278" height="40" fill="none" rx="5" stroke="#c9922a" stroke-width="1" opacity="0.35"/>
+<text x="501" y="1260" fill="#b0a898" font-size="11" font-weight="600" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif" letter-spacing="2">[T] DECLARE WIN</text>
+<rect x="648" y="1234" width="278" height="40" fill="#b83a2a" rx="5" fill-opacity="0.15"/>
+<rect x="648" y="1234" width="278" height="40" fill="none" rx="5" stroke="#e04e38" stroke-width="1" opacity="0.4"/>
+<text x="787" y="1260" fill="#e04e38" font-size="11" font-weight="600" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif" letter-spacing="1">[X] CANCEL</text>
+<rect x="958" y="934" width="334" height="616" fill="#1a1612" rx="8"/>
+<rect x="958" y="934" width="334" height="616" fill="none" rx="8" stroke="#c9922a" stroke-width="1" opacity="0.2"/>
+<line x1="984" y1="934" x2="1265" y2="934" stroke="url(#top-shimmer)" stroke-width="1.5"/>
+<rect x="970" y="948" width="310" height="588" fill="#2a8b7a" rx="8" fill-opacity="0.04"/>
+<rect x="970" y="948" width="310" height="588" fill="none" rx="8" stroke="#3db89e" stroke-width="1" opacity="0.28"/>
+<text x="982" y="972" fill="#3db89e" font-size="14" font-weight="600" text-anchor="start" font-family="Cinzel,'Times New Roman',serif">[*] Commit Window</text>
+<text x="1268" y="972" fill="#e8b84b" font-size="28" font-weight="700" text-anchor="end" font-family="Cinzel,'Times New Roman',serif">4:47</text>
+<text x="982" y="996" fill="#8a8070" font-size="11" font-weight="normal" text-anchor="start" font-family="'Crimson Pro',Georgia,serif" font-style="italic">The roster is locked! Pay your entry</text>
+<text x="982" y="1012" fill="#8a8070" font-size="11" font-weight="normal" text-anchor="start" font-family="'Crimson Pro',Georgia,serif" font-style="italic">fee within the countdown to secure</text>
+<text x="982" y="1028" fill="#8a8070" font-size="11" font-weight="normal" text-anchor="start" font-family="'Crimson Pro',Georgia,serif" font-style="italic">your spot.</text>
+<text x="982" y="1046" fill="#b0a898" font-size="11" font-weight="600" text-anchor="start" font-family="'Crimson Pro',Georgia,serif">Players who don't commit lose their bond.</text>
+<rect x="980" y="1058" width="290" height="62" fill="#111009" rx="4"/>
+<rect x="980" y="1058" width="290" height="62" fill="none" rx="4" stroke="#c9922a" stroke-width="1" opacity="0.22"/>
+<text x="990" y="1074" fill="#6a6050" font-size="8" font-weight="600" text-anchor="start" font-family="Cinzel,'Times New Roman',serif" letter-spacing="3">ENTRY FEE TO PAY</text>
+<text x="990" y="1102" fill="#ffffff" font-size="22" font-weight="700" text-anchor="start" font-family="Cinzel,'Times New Roman',serif">0.1000 AVAX</text>
+<text x="990" y="1115" fill="#6a6050" font-size="9" font-weight="normal" text-anchor="start" font-family="'Crimson Pro',Georgia,serif" font-style="italic">Bond (10%) already paid - completes your stake</text>
+<rect x="980" y="1128" width="290" height="46" fill="url(#btn-grad)" rx="6"/>
+<rect x="980" y="1128" width="290" height="46" fill="none" rx="6" stroke="#e8b84b" stroke-width="1" opacity="0.65"/>
+<rect x="983" y="1175" width="284" height="4" fill="#3c1e00" rx="2" opacity="0.65"/>
+<text x="1125" y="1157" fill="#1a1200" font-size="12" font-weight="700" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif" letter-spacing="2">[ ] PAY ENTRY FEE &amp; COMMIT</text>
+<text x="980" y="1188" fill="#c9922a" font-size="9" font-weight="600" text-anchor="start" font-family="Cinzel,'Times New Roman',serif" letter-spacing="4">ROOM FLOW</text>
+<text x="980" y="1204" fill="#6a6050" font-size="10" font-weight="normal" text-anchor="start" font-family="'Crimson Pro',Georgia,serif">1. Host creates room + pays bond</text>
+<text x="980" y="1220" fill="#6a6050" font-size="10" font-weight="normal" text-anchor="start" font-family="'Crimson Pro',Georgia,serif">2. Players join + pay bond</text>
+<text x="980" y="1236" fill="#6a6050" font-size="10" font-weight="normal" text-anchor="start" font-family="'Crimson Pro',Georgia,serif">3. Host locks roster</text>
+<text x="980" y="1252" fill="#6a6050" font-size="10" font-weight="normal" text-anchor="start" font-family="'Crimson Pro',Georgia,serif">4. 5-min commit window opens</text>
+<text x="980" y="1268" fill="#6a6050" font-size="10" font-weight="normal" text-anchor="start" font-family="'Crimson Pro',Georgia,serif">5. All pay entry fee -- game starts</text>
+<rect x="980" y="1294" width="290" height="44" fill="#1a1612" rx="4"/>
+<rect x="980" y="1294" width="290" height="44" fill="none" rx="4" stroke="#c9922a" stroke-width="1" opacity="0.14"/>
+<text x="1125" y="1310" fill="#6a6050" font-size="8" font-weight="600" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif" letter-spacing="3">YOUR ROOM ID</text>
+<text x="1125" y="1332" fill="#e8b84b" font-size="22" font-weight="700" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif">#7</text>
+</g>
+<rect x="1350" y="846" width="1284" height="724" fill="none" rx="6" stroke="#c9922a" stroke-width="0.5" opacity="0.22"/>
+<text x="1352" y="838" fill="#c9922a" font-size="9" font-weight="600" text-anchor="start" font-family="Cinzel,'Times New Roman',serif" letter-spacing="4" opacity="0.65">SCREEN 4  |  GAME</text>
+<g id="screen-4" clip-path="url(#sc4)">
+<rect x="1352" y="848" width="1280" height="720" fill="#060404"/>
+<rect x="1352" y="848" width="1280" height="720" fill="url(#grid-pat)"/>
+<ellipse cx="1633" cy="1049" rx="486" ry="302" fill="url(#glow-gold)"/>
+<ellipse cx="2350" cy="1366" rx="486" ry="302" fill="url(#glow-teal)"/>
+<rect x="1352" y="848" width="1280" height="68" fill="#060404"/>
+<line x1="1352" y1="916" x2="2632" y2="916" stroke="#e8b84b" stroke-width="1" opacity="0.35"/>
+<text x="1374" y="892" fill="#e8b84b" font-size="18" font-weight="bold" text-anchor="start" font-family="Cinzel,'Times New Roman',serif">|</text>
+<text x="1404" y="892" fill="#e8b84b" font-size="18" font-weight="700" text-anchor="start" font-family="Cinzel,'Times New Roman',serif" letter-spacing="2">LOOTOPOLY</text>
+<rect x="2330" y="868" width="130" height="28" fill="#2a8b7a" rx="3" fill-opacity="0.1"/>
+<rect x="2330" y="868" width="130" height="28" fill="#3db89e" rx="3" stroke="#3db89e" stroke-width="1" opacity="0.35"/>
+<text x="2395" y="886" fill="#3db89e" font-size="10" font-weight="600" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif" letter-spacing="3">AVAX  FUJI</text>
+<rect x="2470" y="867" width="44" height="30" fill="none" rx="4" stroke="#c9922a" stroke-width="1" opacity="0.28"/>
+<text x="2492" y="887" fill="#b0a898" font-size="12" font-weight="normal" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif">~</text>
+<rect x="2522" y="867" width="98" height="30" fill="#1a1612" rx="4" stroke="#c9922a" stroke-width="1" opacity="0.35"/>
+<text x="2571" y="886" fill="#b0a898" font-size="9" font-weight="normal" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif">0xA3c4...9F2e</text>
+<rect x="1376" y="932" width="1232" height="693" fill="#000000" rx="8"/>
+<rect x="1376" y="932" width="1232" height="693" fill="url(#game-glow-g)" rx="8"/>
+<rect x="1376" y="932" width="1232" height="693" fill="url(#game-glow-t)" rx="8"/>
+<rect x="1376" y="932" width="1232" height="693" fill="url(#scanlines)" rx="8"/>
+<rect x="1376" y="932" width="1232" height="693" fill="none" rx="8" stroke="#e8b84b" stroke-width="1" opacity="0.38"/>
+<rect x="1962" y="1254" width="60" height="34" fill="#1a1612" rx="8" opacity="0.28"/>
+<circle cx="1982" cy="1271" r="4" fill="#b0a898" opacity="0.28"/>
+<circle cx="2002" cy="1271" r="4" fill="#b0a898" opacity="0.28"/>
+<text x="1992" y="1306" fill="#b0a898" font-size="14" font-weight="600" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif" letter-spacing="5" opacity="0.28">UNITY BUILD RENDERS HERE</text>
+<text x="1992" y="1328" fill="#6a6050" font-size="12" font-weight="normal" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif" font-style="italic" opacity="0.38">Room #7  |  LIVE</text>
+<rect x="1388" y="944" width="200" height="72" fill="#1a1612" rx="8" opacity="0.9"/>
+<rect x="1388" y="944" width="200" height="72" fill="none" rx="8" stroke="#e8b84b" stroke-width="1.5" opacity="0.6"/>
+<text x="1398" y="962" fill="#f5d070" font-size="11" font-weight="700" text-anchor="start" font-family="Cinzel,'Times New Roman',serif">You  0xA3c4</text>
+<rect x="1398" y="970" width="110" height="5" fill="#221e18" rx="3"/>
+<rect x="1398" y="970" width="78" height="5" fill="#b83a2a" rx="3"/>
+<text x="1398" y="988" fill="#e04e38" font-size="10" font-weight="normal" text-anchor="start" font-family="Cinzel,'Times New Roman',serif">HP  8</text>
+<text x="1398" y="1002" fill="#e8b84b" font-size="10" font-weight="normal" text-anchor="start" font-family="Cinzel,'Times New Roman',serif">Gold  1,240g</text>
+<rect x="1902" y="932" width="180" height="20" fill="#1a1612"/>
+<rect x="1902" y="942" width="180" height="28" fill="#1a1612" rx="8"/>
+<rect x="1902" y="932" width="180" height="38" fill="none" stroke="#c9922a" stroke-width="1" opacity="0.4"/>
+<text x="1992" y="948" fill="#b0a898" font-size="9" font-weight="600" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif" letter-spacing="4">YOUR TURN</text>
+<text x="1992" y="964" fill="#e8b84b" font-size="12" font-weight="700" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif">Roll the Dice</text>
+<rect x="2458" y="1565" width="130" height="46" fill="url(#btn-grad)" rx="6"/>
+<rect x="2458" y="1565" width="130" height="46" fill="none" rx="6" stroke="#e8b84b" stroke-width="1" opacity="0.6"/>
+<text x="2523" y="1595" fill="#1a1200" font-size="13" font-weight="700" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif" letter-spacing="2">[*] ROLL</text>
+<rect x="1376" y="1641" width="299" height="64" fill="#111009" rx="4"/>
+<rect x="1376" y="1641" width="299" height="64" fill="none" rx="4" stroke="#c9922a" stroke-width="1" opacity="0.15"/>
+<text x="1390" y="1659" fill="#6a6050" font-size="8" font-weight="600" text-anchor="start" font-family="Cinzel,'Times New Roman',serif" letter-spacing="3">ROOM</text>
+<text x="1390" y="1687" fill="#e8b84b" font-size="20" font-weight="700" text-anchor="start" font-family="Cinzel,'Times New Roman',serif">#7</text>
+<rect x="1687" y="1641" width="299" height="64" fill="#111009" rx="4"/>
+<rect x="1687" y="1641" width="299" height="64" fill="none" rx="4" stroke="#c9922a" stroke-width="1" opacity="0.15"/>
+<text x="1701" y="1659" fill="#6a6050" font-size="8" font-weight="600" text-anchor="start" font-family="Cinzel,'Times New Roman',serif" letter-spacing="3">PRIZE POOL</text>
+<text x="1701" y="1687" fill="#e04e38" font-size="20" font-weight="700" text-anchor="start" font-family="Cinzel,'Times New Roman',serif">0.285 AVAX</text>
+<rect x="1998" y="1641" width="299" height="64" fill="#111009" rx="4"/>
+<rect x="1998" y="1641" width="299" height="64" fill="none" rx="4" stroke="#c9922a" stroke-width="1" opacity="0.15"/>
+<text x="2012" y="1659" fill="#6a6050" font-size="8" font-weight="600" text-anchor="start" font-family="Cinzel,'Times New Roman',serif" letter-spacing="3">PLAYERS ALIVE</text>
+<text x="2012" y="1687" fill="#3db89e" font-size="20" font-weight="700" text-anchor="start" font-family="Cinzel,'Times New Roman',serif">3</text>
+<rect x="2309" y="1641" width="299" height="64" fill="#111009" rx="4"/>
+<rect x="2309" y="1641" width="299" height="64" fill="none" rx="4" stroke="#c9922a" stroke-width="1" opacity="0.15"/>
+<text x="2323" y="1659" fill="#6a6050" font-size="8" font-weight="600" text-anchor="start" font-family="Cinzel,'Times New Roman',serif" letter-spacing="3">STATE</text>
+<text x="2323" y="1687" fill="#b0a898" font-size="20" font-weight="700" text-anchor="start" font-family="Cinzel,'Times New Roman',serif">LIVE</text>
+<circle cx="2363" cy="1681" r="5" fill="#e04e38"/>
+<rect x="1424" y="944" width="240" height="84" fill="#2a8b7a" rx="4" opacity="0.6" fill-opacity="0.03"/>
+<rect x="1424" y="944" width="240" height="84" fill="none" rx="4" stroke="#3db89e" stroke-width="0.5" opacity="0.12"/>
+<text x="1436" y="962" fill="#3db89e" font-size="9" font-weight="normal" text-anchor="start" font-family="Cinzel,'Times New Roman',serif" letter-spacing="1" opacity="0.45">Goblin Gulch</text>
+<rect x="1682" y="944" width="240" height="84" fill="#2a8b7a" rx="4" opacity="0.6" fill-opacity="0.03"/>
+<rect x="1682" y="944" width="240" height="84" fill="none" rx="4" stroke="#3db89e" stroke-width="0.5" opacity="0.12"/>
+<text x="1694" y="962" fill="#3db89e" font-size="9" font-weight="normal" text-anchor="start" font-family="Cinzel,'Times New Roman',serif" letter-spacing="1" opacity="0.45">Dragon Path</text>
+<rect x="1940" y="944" width="240" height="84" fill="#2a8b7a" rx="4" opacity="0.6" fill-opacity="0.03"/>
+<rect x="1940" y="944" width="240" height="84" fill="none" rx="4" stroke="#3db89e" stroke-width="0.5" opacity="0.12"/>
+<text x="1952" y="962" fill="#3db89e" font-size="9" font-weight="normal" text-anchor="start" font-family="Cinzel,'Times New Roman',serif" letter-spacing="1" opacity="0.45">Lich Landing</text>
+<rect x="2198" y="944" width="240" height="84" fill="#2a8b7a" rx="4" opacity="0.6" fill-opacity="0.03"/>
+<rect x="2198" y="944" width="240" height="84" fill="none" rx="4" stroke="#3db89e" stroke-width="0.5" opacity="0.12"/>
+<text x="2210" y="962" fill="#3db89e" font-size="9" font-weight="normal" text-anchor="start" font-family="Cinzel,'Times New Roman',serif" letter-spacing="1" opacity="0.45">Titan Terrace</text>
+</g>
+<g id="modal-ref">
+<text x="1144" y="768" fill="#c9922a" font-size="9" font-weight="600" text-anchor="start" font-family="Cinzel,'Times New Roman',serif" letter-spacing="4" opacity="0.5">MODAL REFERENCE  |  JOIN ROOM</text>
+<rect x="1124" y="760" width="420" height="260" fill="#060404" rx="8" opacity="0.85"/>
+<rect x="1144" y="780" width="380" height="220" fill="#1a1612" rx="8"/>
+<rect x="1144" y="780" width="380" height="220" fill="none" rx="8" stroke="#e8b84b" stroke-width="1" opacity="0.38"/>
+<line x1="1174" y1="780" x2="1493" y2="780" stroke="url(#top-shimmer)" stroke-width="1.5"/>
+<text x="1334" y="808" fill="#e8b84b" font-size="16" font-weight="700" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif">Join Room #12</text>
+<text x="1334" y="828" fill="#8a8070" font-size="11" font-weight="normal" text-anchor="middle" font-family="'Crimson Pro',Georgia,serif" font-style="italic">Pay a 10% bond to reserve your spot.</text>
+<rect x="1160" y="838" width="348" height="52" fill="#111009" rx="4"/>
+<rect x="1160" y="838" width="348" height="52" fill="none" rx="4" stroke="#c9922a" stroke-width="1" opacity="0.22"/>
+<text x="1170" y="854" fill="#6a6050" font-size="8" font-weight="600" text-anchor="start" font-family="Cinzel,'Times New Roman',serif" letter-spacing="3">BOND TO PAY NOW</text>
+<text x="1170" y="880" fill="#ffffff" font-size="20" font-weight="700" text-anchor="start" font-family="Cinzel,'Times New Roman',serif">0.0100 AVAX</text>
+<text x="1170" y="892" fill="#6a6050" font-size="9" font-weight="normal" text-anchor="start" font-family="'Crimson Pro',Georgia,serif" font-style="italic">10% of entry fee - refundable if cancelled</text>
+<rect x="1160" y="900" width="169" height="42" fill="url(#btn-grad)" rx="5"/>
+<rect x="1160" y="900" width="169" height="42" fill="none" rx="5" stroke="#e8b84b" stroke-width="1" opacity="0.65"/>
+<rect x="1163" y="943" width="163" height="4" fill="#3c1e00" rx="2" opacity="0.65"/>
+<text x="1244" y="927" fill="#1a1200" font-size="12" font-weight="700" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif" letter-spacing="2">PAY BOND &amp; JOIN</text>
+<rect x="1339" y="900" width="169" height="42" fill="none" rx="5" stroke="#c9922a" stroke-width="1" opacity="0.35"/>
+<text x="1423" y="927" fill="#b0a898" font-size="11" font-weight="600" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif" letter-spacing="2">CANCEL</text>
+<circle cx="1506" cy="798" r="10" fill="#221e18"/>
+<text x="1506" y="803" fill="#6a6050" font-size="11" font-weight="normal" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif">X</text>
+</g>
+</svg>

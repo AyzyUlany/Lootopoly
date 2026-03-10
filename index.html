@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lootopoly</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cinzel+Decorative:wght@400;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════
+     UNITY CANVAS — game world renders here (z-index 1)
+     ═══════════════════════════════════════════════════ -->
+<canvas id="unity-canvas" tabindex="-1"></canvas>
+
+<!-- ═══════════════════════════════════════════════════════
+     LOADING SCREEN — visible while Unity build downloads
+     ═══════════════════════════════════════════════════ -->
+<div id="unity-loading-screen">
+    <div class="load-logo">⚔️ LOOTOPOLY</div>
+    <div class="load-sub">Loading the dungeon…</div>
+    <div class="load-bar-bg"><div class="load-bar" id="load-bar"></div></div>
+    <div class="load-pct" id="load-pct">0%</div>
+    <div class="load-err" id="load-err"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     LOBBY OVERLAY — z-index 200, hidden once game starts
+     ═══════════════════════════════════════════════════ -->
+<div id="lobby-overlay">
+
+    <div class="lo-header">
+        <div class="logo"><span class="logo-icon">⚔️</span>LOOTOPOLY</div>
+        <div style="display:flex;align-items:center;gap:14px">
+            <span class="chain-tag">AVAX · FUJI</span>
+            <button class="btn btn-ghost" style="padding:10px 18px;font-size:.85rem" onclick="softRefresh()">↻</button>
+            <button class="btn btn-gold"  style="padding:10px 20px;font-size:.85rem" id="btn-wallet" onclick="handleWalletBtn()">Connect Wallet</button>
+        </div>
+    </div>
+
+    <div class="lo-body">
+
+        <!-- SCREEN: connect wallet -->
+        <div id="screen-connect">
+            <div class="gate-crest">🎲</div>
+            <h1 class="gate-title">Ready to <span>Plunder?</span></h1>
+            <p class="gate-sub">Connect your wallet to create or join a room.<br>Entry fees fund the prize pool — last one standing claims it all.</p>
+            <div class="gate-features">
+                <div class="gate-feat"><span class="feat-dot"></span>On-chain rooms</div>
+                <div class="gate-feat"><span class="feat-dot"></span>Winner-takes-all prize</div>
+                <div class="gate-feat"><span class="feat-dot"></span>2–4 players</div>
+                <div class="gate-feat"><span class="feat-dot"></span>Avalanche C-Chain</div>
+            </div>
+            <button class="btn btn-gold" style="padding:18px 40px;font-size:1.1rem" onclick="connectWallet()">Connect Wallet</button>
+        </div>
+
+        <!-- SCREEN: room list + create -->
+        <div id="screen-lobby" class="hidden">
+            <div class="stat-row">
+                <div class="stat-chip">
+                    <div class="stat-label">Your Balance</div>
+                    <div class="stat-val val-ember" id="stat-balance">— AVAX</div>
+                </div>
+                <div class="stat-chip">
+                    <div class="stat-label">Open Rooms</div>
+                    <div class="stat-val val-mist" id="stat-open">—</div>
+                </div>
+                <div class="stat-chip">
+                    <div class="stat-label">Total Rooms</div>
+                    <div class="stat-val val-teal" id="stat-total">—</div>
+                </div>
+                <div class="stat-chip" style="cursor:pointer" onclick="claimWithdraw()" title="Click to withdraw">
+                    <div class="stat-label">Claimable ↓ Withdraw</div>
+                    <div class="stat-val val-gold" id="stat-claimable">0.0000 AVAX</div>
+                    <div class="stat-sub">tap to withdraw</div>
+                </div>
+            </div>
+            <div class="lobby-layout">
+                <div>
+                    <div class="section-hdr">
+                        <div class="section-title">🏟 Open Rooms <span class="badge badge-teal" id="rooms-badge">—</span></div>
+                        <button class="btn btn-ghost" style="padding:10px 18px;font-size:.85rem" onclick="refreshRooms()">↻ Refresh</button>
+                    </div>
+                    <div class="room-list" id="room-list"></div>
+                </div>
+                <div>
+                    <div class="section-hdr">
+                        <div class="section-title">➕ Create Room</div>
+                        <span class="badge badge-ember">HOST</span>
+                    </div>
+                    <div class="lo-panel">
+                        <div class="form-field">
+                            <label class="form-label">Entry Fee (AVAX)</label>
+                            <input class="form-input" type="number" id="input-fee" value="0.1" min="0.001" step="0.01" oninput="updatePrizePreview()">
+                            <div class="presets">
+                                <div class="preset-btn"        onclick="setFee(0.05,this)">0.05</div>
+                                <div class="preset-btn active" onclick="setFee(0.1,this)">0.1</div>
+                                <div class="preset-btn"        onclick="setFee(0.5,this)">0.5</div>
+                                <div class="preset-btn"        onclick="setFee(1.0,this)">1.0</div>
+                            </div>
+                        </div>
+                        <div class="form-field">
+                            <label class="form-label">Max Players</label>
+                            <div class="player-opts">
+                                <div class="player-opt-btn"        onclick="setPlayers(2,this)">2</div>
+                                <div class="player-opt-btn active" onclick="setPlayers(3,this)">3</div>
+                                <div class="player-opt-btn"        onclick="setPlayers(4,this)">4</div>
+                            </div>
+                        </div>
+                        <div class="prize-preview">
+                            <div class="prize-preview-label">Winner Prize Pool</div>
+                            <div class="prize-preview-val" id="prize-preview">0.285 AVAX</div>
+                            <div class="prize-preview-sub">95% of total · 5% protocol fee</div>
+                        </div>
+                        <button class="btn btn-gold" style="width:100%;justify-content:center" id="btn-create" onclick="createRoom()">🎲 Create Room</button>
+                    </div>
+                    <div class="contract-info">
+                        <div style="font-family:'Cinzel',serif;font-size:.85rem;letter-spacing:.2em;color:var(--gold);margin-bottom:10px">CONTRACT INFO</div>
+                        Address: <a class="contract-link" id="contract-addr-link" href="#" target="_blank">—</a><br>
+                        Protocol Fee: <strong>5%</strong><br>
+                        Min Players: <strong>2</strong> · Max: <strong>4</strong><br>
+                        Chain: <strong style="color:var(--teal2)">Avalanche Fuji Testnet</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SCREEN: waiting room -->
+        <div id="screen-waiting" class="hidden">
+            <div class="waiting-grid">
+                <div>
+                    <div class="room-status-hdr">
+                        <div class="section-title">🏟 Your Active Room</div>
+                        <div class="live-badge"><span class="live-dot"></span><span id="room-state-label">WAITING</span></div>
+                    </div>
+                    <div class="room-info-grid">
+                        <div class="info-cell">
+                            <div class="info-cell-label">Room ID</div>
+                            <div class="info-cell-val val-gold" id="w-room-id">#—</div>
+                        </div>
+                        <div class="info-cell">
+                            <div class="info-cell-label">Prize Pool</div>
+                            <div class="info-cell-val val-ember" id="w-prize">— AVAX</div>
+                        </div>
+                        <div class="info-cell">
+                            <div class="info-cell-label">Players</div>
+                            <div class="info-cell-val val-teal" id="w-players">—/—</div>
+                        </div>
+                    </div>
+                    <div class="section-title" style="margin-bottom:16px">Players in Room</div>
+                    <div class="player-slots" id="player-slots"></div>
+                    <div style="display:flex;gap:14px;flex-wrap:wrap">
+                        <button class="btn btn-teal"   id="btn-lock-roster"    onclick="lockRoster()">🔒 Lock Roster</button>
+                        <button class="btn btn-ghost"  id="btn-declare-winner" style="display:none" onclick="openModal('modal-declare')">🏆 Declare Winner</button>
+                        <button class="btn btn-danger" id="btn-cancel-room"    onclick="cancelRoom()">✕ Cancel Room</button>
+                    </div>
+                </div>
+                <div>
+                    <div class="commit-panel" id="commit-panel" style="display:none">
+                        <div class="commit-hdr">
+                            <div class="commit-title">💰 Commit Window</div>
+                            <div class="commit-countdown" id="commit-countdown">5:00</div>
+                        </div>
+                        <p class="commit-desc">The roster is locked! Pay your entry fee within the countdown to secure your spot. <strong style="color:#fff">Players who don't commit lose their bond.</strong></p>
+                        <div class="commit-fee-box">
+                            <div class="commit-fee-label">Entry Fee to Pay</div>
+                            <div class="commit-fee-val" id="commit-fee-display">—</div>
+                            <div class="commit-fee-sub">Bond (10%) already paid — this completes your stake</div>
+                        </div>
+                        <button class="btn btn-gold" style="width:100%;justify-content:center" id="btn-commit" onclick="commitFee()">✅ Pay Entry Fee &amp; Commit</button>
+                    </div>
+                    <div class="lo-panel" id="waiting-idle-panel">
+                        <div class="section-title" style="margin-bottom:16px">Waiting for Players</div>
+                        <p class="idle-panel-desc">Share this room ID with friends or wait for adventurers from the lobby. When ready, lock the roster to open the commit window.</p>
+                        <div class="big-room-id" id="big-room-id">#—</div>
+                    </div>
+                    <div class="contract-info" style="margin-top:20px">
+                        <div style="font-family:'Cinzel',serif;font-size:.85rem;letter-spacing:.2em;color:var(--gold);margin-bottom:10px">ROOM FLOW</div>
+                        1. Host creates room + pays bond<br>
+                        2. Players join + pay bond<br>
+                        3. Host locks roster<br>
+                        4. 5-min commit window opens<br>
+                        5. All pay entry fee → game starts
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /lo-body -->
+</div><!-- /lobby-overlay -->
+
+<!-- ═══════════════════════════════════════════════════════
+     IN-GAME HUD OVERLAY — z-index 100, pointer-events:none root
+     ═══════════════════════════════════════════════════ -->
+<div id="overlay">
+
+    <div id="hdr">
+        <div class="logo"><span class="logo-icon">⚔️</span>LOOTOPOLY</div>
+        <div id="turn-banner" class="hidden"></div>
+        <div style="display:flex;align-items:center;gap:14px">
+            <span class="chain-tag">AVAX · FUJI</span>
+            <span id="room-badge" style="font-family:'Cinzel',serif;font-size:.85rem;color:var(--fog);letter-spacing:.12em"></span>
+        </div>
+    </div>
+
+    <div id="mid">
+
+        <!-- LEFT HUDs: P1 & P2 -->
+        <div class="hud-col">
+            <div class="hud hidden" id="hud-0">
+                <div class="hud-name"><span id="hud-name-0">—</span><span class="hud-wanted" id="hud-wanted-0">⚠️ WANTED</span></div>
+                <div class="hp-bar-bg"><div class="hp-bar" id="hud-hpbar-0"></div></div>
+                <div class="hud-stats">
+                    <div class="hud-stat"><div class="lbl">HP</div><span id="hud-hp-0">—</span></div>
+                    <div class="hud-stat"><div class="lbl">Gold</div><span id="hud-gold-0">—</span></div>
+                </div>
+                <div class="hud-gear">
+                    <div class="hud-gear-item"><div class="lbl">Wpn</div><span id="hud-wpn-0">—</span></div>
+                    <div class="hud-gear-item"><div class="lbl">Arm</div><span id="hud-arm-0">—</span></div>
+                    <div class="hud-gear-item"><div class="lbl">Bts</div><span id="hud-bts-0">—</span></div>
+                    <div class="hud-gear-item"><div class="lbl">Acc</div><span id="hud-acc-0">—</span></div>
+                </div>
+            </div>
+            <div class="hud hidden" id="hud-1">
+                <div class="hud-name"><span id="hud-name-1">—</span><span class="hud-wanted" id="hud-wanted-1">⚠️ WANTED</span></div>
+                <div class="hp-bar-bg"><div class="hp-bar" id="hud-hpbar-1"></div></div>
+                <div class="hud-stats">
+                    <div class="hud-stat"><div class="lbl">HP</div><span id="hud-hp-1">—</span></div>
+                    <div class="hud-stat"><div class="lbl">Gold</div><span id="hud-gold-1">—</span></div>
+                </div>
+                <div class="hud-gear">
+                    <div class="hud-gear-item"><div class="lbl">Wpn</div><span id="hud-wpn-1">—</span></div>
+                    <div class="hud-gear-item"><div class="lbl">Arm</div><span id="hud-arm-1">—</span></div>
+                    <div class="hud-gear-item"><div class="lbl">Bts</div><span id="hud-bts-1">—</span></div>
+                    <div class="hud-gear-item"><div class="lbl">Acc</div><span id="hud-acc-1">—</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CENTRE: action panels -->
+        <div id="action-col">
+
+            <!-- NEW: PLEASE WAIT PANEL -->
+            <div class="panel hidden" id="panel-wait">
+                <div class="panel-title" style="justify-content:center">⏳ Please Wait</div>
+                <div class="decision-info" id="wait-player-name">—'s Turn</div>
+                <div class="decision-sub">They are currently making their move. Your turn will begin shortly.</div>
+                <div style="text-align:center; margin-top: 20px;">
+                    <span class="spinner" style="width:28px; height:28px; border-width:4px;"></span>
+                </div>
+            </div>
+
+            <div class="panel hidden" id="panel-roll">
+                <div class="roll-player" id="roll-player-name">—</div>
+                <div class="btn-row">
+                    <button class="btn btn-gold" id="btn-roll-move" onclick="unityCall('UI_RollMovementDice')">🎲 Roll Dice</button>
+                </div>
+                <div class="dice-label" id="dice-label"></div>
+            </div>
+
+            <div class="panel hidden" id="panel-movedir">
+                <div class="panel-title">Choose Direction</div>
+                <div class="move-desc">Your boots allow you to move backward on the board. Which way will you go?</div>
+                <div class="btn-row">
+                    <button class="btn btn-gold"  onclick="unityCall('UI_ChooseMoveDirection','false')">▶ Forward</button>
+                    <button class="btn btn-ghost" onclick="unityCall('UI_ChooseMoveDirection','true')">◀ Backward</button>
+                </div>
+            </div>
+
+            <div class="panel hidden" id="panel-action">
+                <div class="action-header" id="action-header">⚡ Action Phase</div>
+                <div class="card-container" id="card-container"><div class="no-cards">No cards in hand</div></div>
+                <div class="btn-row">
+                    <button class="btn btn-ghost" onclick="unityCall('UI_SkipActionPhase')">Skip →</button>
+                </div>
+            </div>
+
+            <div class="panel hidden" id="panel-combat">
+                <div class="panel-title">⚔️ Combat!</div>
+                <div class="monster-name"   id="combat-monster-name">—</div>
+                <div class="monster-stats"  id="combat-monster-stats">—</div>
+                <div class="monster-flavor" id="combat-monster-flavor"></div>
+                <div class="crit-tag hidden" id="combat-crit">⚡ Critical Strike ready!</div>
+                <div class="btn-row">
+                    <button class="btn btn-gold"   id="btn-attack" onclick="onAttackClick()">⚔️ Attack!</button>
+                    <button class="btn btn-danger" id="btn-flee"   onclick="unityCall('UI_Flee')">🏃 Flee</button>
+                </div>
+                <div class="combat-roll-label hidden" id="combat-rolling">Rolling…</div>
+            </div>
+
+            <div class="panel hidden" id="panel-buy">
+                <div class="panel-title">🏰 Purchase Property?</div>
+                <div class="decision-info" id="buy-info">—</div>
+                <div class="btn-row">
+                    <button class="btn btn-gold"  onclick="unityCall('UI_BuyTile')">💰 Buy</button>
+                    <button class="btn btn-ghost" onclick="unityCall('UI_SkipBuyTile')">Pass</button>
+                </div>
+            </div>
+
+            <div class="panel hidden" id="panel-upgrade">
+                <div class="panel-title">⬆️ Upgrade Property?</div>
+                <div class="decision-sub">Upgrading increases the toll collected from enemies who land here.</div>
+                <div class="btn-row">
+                    <button class="btn btn-gold"  onclick="unityCall('UI_UpgradeTile')">⬆️ Upgrade</button>
+                    <button class="btn btn-ghost" onclick="unityCall('UI_SkipUpgrade')">Pass</button>
+                </div>
+            </div>
+
+            <div class="panel hidden" id="panel-trap">
+                <div class="panel-title">🪤 Set a Trap?</div>
+                <div class="decision-sub">Place a trap on this tile to damage enemies who land here.</div>
+                <div class="btn-row">
+                    <button class="btn btn-gold"  onclick="unityCall('UI_SetTrap')">🪤 Set Trap</button>
+                    <button class="btn btn-ghost" onclick="unityCall('UI_SkipTrap')">Pass</button>
+                </div>
+            </div>
+
+            <div class="panel hidden" id="panel-equip">
+                <div class="equip-title" id="equip-title">New Item Found!</div>
+                <div class="equip-compare">
+                    <div class="equip-slot new-item">
+                        <div class="equip-slot-label">🆕 New Item</div>
+                        <div class="equip-slot-item" id="equip-new">—</div>
+                    </div>
+                    <div class="equip-slot">
+                        <div class="equip-slot-label">📦 Current</div>
+                        <div class="equip-slot-item" id="equip-old">—</div>
+                    </div>
+                </div>
+                <div class="btn-row">
+                    <button class="btn btn-gold"  onclick="unityCall('UI_EquipPending')">✅ Equip</button>
+                    <button class="btn btn-ghost" onclick="unityCall('UI_DiscardPending')">🗑 Discard</button>
+                </div>
+            </div>
+
+            <div class="panel hidden" id="panel-shop">
+                <div class="panel-title">🛒 Item Shop</div>
+                <div class="shop-item-info" id="shop-item-info">—</div>
+                <div class="btn-row">
+                    <button class="btn btn-gold"  onclick="unityCall('UI_BuyShopItem')">💰 Buy</button>
+                    <button class="btn btn-teal"  id="btn-craft" style="display:none" onclick="unityCall('UI_CraftItems')">⚒ Craft</button>
+                    <button class="btn btn-ghost" onclick="unityCall('UI_LeaveShop')">Leave →</button>
+                </div>
+            </div>
+
+            <div class="panel hidden" id="panel-gameover">
+                <span class="win-icon">🏆</span>
+                <div class="win-name" id="winner-name">—</div>
+                <div class="win-gold" id="winner-gold">—</div>
+                <div class="btn-row">
+                    <!-- CHANGED: Now calls returnToLobby() to pull the user out of the board -->
+                    <button class="btn btn-gold" onclick="returnToLobby()">🏠 Return to Lobby</button>
+                </div>
+            </div>
+
+        </div><!-- /action-col -->
+
+        <!-- RIGHT HUDs: P3 & P4 -->
+        <div class="hud-col right">
+            <div class="hud hidden" id="hud-2">
+                <div class="hud-name"><span id="hud-name-2">—</span><span class="hud-wanted" id="hud-wanted-2">⚠️ WANTED</span></div>
+                <div class="hp-bar-bg"><div class="hp-bar" id="hud-hpbar-2"></div></div>
+                <div class="hud-stats">
+                    <div class="hud-stat"><div class="lbl">HP</div><span id="hud-hp-2">—</span></div>
+                    <div class="hud-stat"><div class="lbl">Gold</div><span id="hud-gold-2">—</span></div>
+                </div>
+                <div class="hud-gear">
+                    <div class="hud-gear-item"><div class="lbl">Wpn</div><span id="hud-wpn-2">—</span></div>
+                    <div class="hud-gear-item"><div class="lbl">Arm</div><span id="hud-arm-2">—</span></div>
+                    <div class="hud-gear-item"><div class="lbl">Bts</div><span id="hud-bts-2">—</span></div>
+                    <div class="hud-gear-item"><div class="lbl">Acc</div><span id="hud-acc-2">—</span></div>
+                </div>
+            </div>
+            <div class="hud hidden" id="hud-3">
+                <div class="hud-name"><span id="hud-name-3">—</span><span class="hud-wanted" id="hud-wanted-3">⚠️ WANTED</span></div>
+                <div class="hp-bar-bg"><div class="hp-bar" id="hud-hpbar-3"></div></div>
+                <div class="hud-stats">
+                    <div class="hud-stat"><div class="lbl">HP</div><span id="hud-hp-3">—</span></div>
+                    <div class="hud-stat"><div class="lbl">Gold</div><span id="hud-gold-3">—</span></div>
+                </div>
+                <div class="hud-gear">
+                    <div class="hud-gear-item"><div class="lbl">Wpn</div><span id="hud-wpn-3">—</span></div>
+                    <div class="hud-gear-item"><div class="lbl">Arm</div><span id="hud-arm-3">—</span></div>
+                    <div class="hud-gear-item"><div class="lbl">Bts</div><span id="hud-bts-3">—</span></div>
+                    <div class="hud-gear-item"><div class="lbl">Acc</div><span id="hud-acc-3">—</span></div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /mid -->
+</div><!-- /overlay -->
+
+<!-- EVENT LOG -->
+<div id="log-wrap">
+    <div id="log-header" onclick="toggleLog()">
+        <span>⚔️ Event Log</span><span id="log-toggle-icon">▼</span>
+    </div>
+    <div id="log-body"></div>
+</div>
+
+<!-- TOASTS -->
+<div id="toast-wrap"></div>
+
+<!-- MODAL: declare winner -->
+<div class="modal-overlay" id="modal-declare">
+    <div class="modal">
+        <button class="modal-close" onclick="closeModal('modal-declare')">✕</button>
+        <div class="modal-title">🏆 Declare Winner</div>
+        <p class="modal-sub">Enter the wallet address of the winning player to distribute the prize pool on-chain.</p>
+        <div class="form-field">
+            <label class="form-label">Winner Address</label>
+            <input class="form-input" id="winner-addr-input" placeholder="0x…" style="font-family:monospace;font-size:1.1rem">
+        </div>
+        <div style="display:flex;gap:14px">
+            <button class="btn btn-gold"  style="flex:1;justify-content:center" onclick="submitDeclareWinner()">Confirm &amp; Pay Out</button>
+            <button class="btn btn-ghost" style="flex:1;justify-content:center" onclick="closeModal('modal-declare')">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL: join room -->
+<div class="modal-overlay" id="modal-join">
+    <div class="modal">
+        <button class="modal-close" onclick="closeModal('modal-join')">✕</button>
+        <div class="modal-title" id="modal-join-title">Join Room #—</div>
+        <p class="modal-sub">Pay a 10% bond to reserve your spot. The full entry fee is due during the commit window.</p>
+        <div class="commit-fee-box" style="margin-bottom:16px">
+            <div class="commit-fee-label">Bond to Pay Now</div>
+            <div class="commit-fee-val" id="modal-join-bond">—</div>
+            <div class="commit-fee-sub">10% of entry fee · refundable if room is cancelled</div>
+        </div>
+        <div class="commit-fee-box" style="margin-bottom:24px">
+            <div class="commit-fee-label">Remaining Entry Fee (at commit)</div>
+            <div class="commit-fee-val" id="modal-join-fee">—</div>
+            <div class="commit-fee-sub">Due during 5-min commit window after roster locks</div>
+        </div>
+        <div style="display:flex;gap:14px">
+            <button class="btn btn-gold"  style="flex:1;justify-content:center" onclick="confirmJoin()">Pay Bond &amp; Join</button>
+            <button class="btn btn-ghost" style="flex:1;justify-content:center" onclick="closeModal('modal-join')">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<script src="game.js"></script>
+</body>
+</html>

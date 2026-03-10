@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Lootopoly UI | info-box.svg — Unity UI Toolkit compatible      -->
+<!-- Usage: background-image on .info-box, .stat-row-box, .combat-info-box -->
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="64" viewBox="0 0 360 64">
+  <defs>
+    <linearGradient id="info-bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#141008" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#0a0804" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+  <rect width="360" height="64" rx="6" fill="url(#info-bg)"/>
+  <rect width="360" height="64" rx="6" fill="none"
+        stroke="#c9922a" stroke-width="1" stroke-opacity="0.28"/>
+  <!-- Top label divider line -->
+  <line x1="10" y1="22" x2="350" y2="22" stroke="#c9922a" stroke-width="0.5" stroke-opacity="0.15"/>
+  <!-- Top label bar -->
+  <rect x="0" y="0" width="360" height="22" rx="6" fill="#c9922a" fill-opacity="0.06"/>
+</svg>

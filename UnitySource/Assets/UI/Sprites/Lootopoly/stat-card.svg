@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Lootopoly UI | stat-card.svg — Unity UI Toolkit compatible     -->
+<!-- Usage: background-image on .lobby-stat-item, .waiting-info-cell-->
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="64" viewBox="0 0 120 64">
+  <defs>
+    <linearGradient id="stat-bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#181008" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#0e0804" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+  <rect width="120" height="64" rx="6" fill="url(#stat-bg)"/>
+  <rect width="120" height="64" rx="6" fill="none"
+        stroke="#c9922a" stroke-width="1" stroke-opacity="0.25"/>
+  <!-- Subtle top edge -->
+  <line x1="10" y1="0.5" x2="110" y2="0.5" stroke="#c9922a" stroke-width="0.75" stroke-opacity="0.4"/>
+  <!-- Faint inner border -->
+  <rect x="2" y="2" width="116" height="60" rx="4.5" fill="none"
+        stroke="#ffffff" stroke-width="0.5" stroke-opacity="0.04"/>
+</svg>

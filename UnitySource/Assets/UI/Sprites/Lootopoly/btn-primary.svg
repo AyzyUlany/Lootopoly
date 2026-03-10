@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Lootopoly UI | btn-primary.svg — Unity UI Toolkit compatible  -->
+<!-- Usage: background-image on .btn-primary buttons               -->
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="52" viewBox="0 0 320 52">
+  <defs>
+    <linearGradient id="btn-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#b87820"/>
+      <stop offset="45%"  stop-color="#e8b84b"/>
+      <stop offset="100%" stop-color="#b87820"/>
+    </linearGradient>
+    <linearGradient id="btn-sheen" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#ffffff" stop-opacity="0.18"/>
+      <stop offset="50%"  stop-color="#ffffff" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.12"/>
+    </linearGradient>
+  </defs>
+  <!-- Main gold fill -->
+  <rect width="320" height="48" rx="8" fill="url(#btn-gold)"/>
+  <!-- Sheen overlay -->
+  <rect width="320" height="48" rx="8" fill="url(#btn-sheen)"/>
+  <!-- Top highlight line -->
+  <line x1="12" y1="1" x2="308" y2="1" stroke="#ffffff" stroke-width="1" stroke-opacity="0.25"/>
+  <!-- Border -->
+  <rect width="320" height="48" rx="8" fill="none"
+        stroke="#f0d060" stroke-width="1.5" stroke-opacity="0.7"/>
+  <!-- Bottom shadow bevel -->
+  <rect x="3" y="48" width="314" height="4" rx="2" fill="#3c1e00" fill-opacity="0.65"/>
+</svg>

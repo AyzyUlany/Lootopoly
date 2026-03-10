@@ -1,0 +1,17 @@
+# Unity generated folders to ignore
+UnitySource/[Ll]ibrary/
+UnitySource/[Tt]emp/
+UnitySource/[Oo]bj/
+UnitySource/[Bb]uild/
+UnitySource/[Bb]uilds/
+UnitySource/[Ll]ogs/
+UnitySource/[Mm]emoryCaptures/
+
+# Asset meta data should be kept, but ignore cache
+sysinfo.txt
+*.apk
+*.unitypackage
+
+# Mac/Windows system files
+.DS_Store
+Thumbs.db

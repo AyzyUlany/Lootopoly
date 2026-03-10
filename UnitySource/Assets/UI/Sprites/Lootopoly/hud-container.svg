@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Lootopoly UI | hud-container.svg — Unity UI Toolkit compatible -->
+<!-- Usage: background-image on .hud-container                      -->
+<svg xmlns="http://www.w3.org/2000/svg" width="272" height="130" viewBox="0 0 272 130">
+  <defs>
+    <linearGradient id="hud-bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#1e1408" stop-opacity="0.98"/>
+      <stop offset="100%" stop-color="#0a0602" stop-opacity="0.98"/>
+    </linearGradient>
+    <linearGradient id="hud-top-line" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#c9922a" stop-opacity="0"/>
+      <stop offset="40%"  stop-color="#e8b84b" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#c9922a" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <!-- Main bg -->
+  <rect width="272" height="130" rx="14" fill="url(#hud-bg)"/>
+  <!-- Border -->
+  <rect width="272" height="130" rx="14" fill="none"
+        stroke="rgba(255,255,255,0.10)" stroke-width="2"/>
+  <!-- Top shimmer -->
+  <line x1="14" y1="1" x2="258" y2="1" stroke="url(#hud-top-line)" stroke-width="1.5"/>
+  <!-- Corner accent TL -->
+  <path d="M 14,0 L 14,7 M 0,14 L 7,14" stroke="#c9922a" stroke-width="1.5" stroke-opacity="0.5"/>
+  <!-- Corner accent TR -->
+  <path d="M 258,0 L 258,7 M 272,14 L 265,14" stroke="#c9922a" stroke-width="1.5" stroke-opacity="0.5"/>
+  <!-- Divider line near bottom (equipment slot area) -->
+  <line x1="12" y1="96" x2="260" y2="96" stroke="#ffffff" stroke-width="1" stroke-opacity="0.07"/>
+</svg>

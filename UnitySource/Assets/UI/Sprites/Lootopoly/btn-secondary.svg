@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Lootopoly UI | btn-secondary.svg — Unity UI Toolkit compatible -->
+<!-- Usage: background-image on .btn-secondary buttons              -->
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="52" viewBox="0 0 320 52">
+  <defs>
+    <linearGradient id="btn-sec-bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#2a2010" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#1a1408" stop-opacity="0.9"/>
+    </linearGradient>
+  </defs>
+  <rect width="320" height="48" rx="8" fill="url(#btn-sec-bg)"/>
+  <rect width="320" height="48" rx="8" fill="none"
+        stroke="#c9922a" stroke-width="1.5" stroke-opacity="0.55"/>
+  <!-- Top edge faint highlight -->
+  <line x1="12" y1="1" x2="308" y2="1" stroke="#c9922a" stroke-width="0.75" stroke-opacity="0.18"/>
+</svg>

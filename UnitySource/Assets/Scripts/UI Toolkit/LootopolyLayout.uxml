@@ -1,0 +1,453 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/Scripts/UI%20Toolkit/LootopolyStyles.uss?fileID=7433441132597879392&amp;guid=3f3e409a62c7c214fbd5b680040d54de&amp;type=3#LootopolyStyles"/>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         GAME HUDs — Side columns (always visible during gameplay)
+    ════════════════════════════════════════════════════════════ -->
+    <ui:VisualElement class="screen-overlay">
+
+        <!-- LEFT COLUMN: P1 + P3 + Event Log -->
+        <ui:VisualElement class="side-column left-column">
+
+            <!-- HUD Player 1 -->
+            <ui:VisualElement name="HUD_P1" class="hud-container panel-base hidden">
+                <ui:VisualElement class="hud-top-row">
+                    <ui:VisualElement class="portrait-frame">
+                        <ui:VisualElement name="Portrait_P1" class="portrait-image"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement class="hud-core-stats">
+                        <ui:VisualElement class="hud-name-row">
+                            <ui:Label name="Name_P1" text="Player 1" class="hud-name"/>
+                            <ui:Label name="Wanted_P1" text="⚠ WANTED" class="hud-wanted hidden"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="hud-stats-row">
+                            <ui:Label name="HP_P1"   text="♥ 20/20" class="hud-stat hud-hp"/>
+                            <ui:Label name="Gold_P1" text="◈ 500g"  class="hud-stat hud-gold"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="hud-bar-track">
+                            <ui:VisualElement name="HPBar_P1" class="hud-bar-fill" style="width: 100%;"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement class="hud-slots">
+                    <ui:Label name="Weapon_P1" text="⚔ —" class="hud-slot slot-weapon"/>
+                    <ui:Label name="Armor_P1"  text="◈ —" class="hud-slot slot-armor"/>
+                    <ui:Label name="Boots_P1"  text="◉ —" class="hud-slot slot-boots"/>
+                    <ui:Label name="Acc_P1"    text="✦ —" class="hud-slot slot-acc"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+
+            <!-- HUD Player 3 -->
+            <ui:VisualElement name="HUD_P3" class="hud-container panel-base hidden">
+                <ui:VisualElement class="hud-top-row">
+                    <ui:VisualElement class="portrait-frame">
+                        <ui:VisualElement name="Portrait_P3" class="portrait-image"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement class="hud-core-stats">
+                        <ui:VisualElement class="hud-name-row">
+                            <ui:Label name="Name_P3" text="Player 3" class="hud-name"/>
+                            <ui:Label name="Wanted_P3" text="⚠ WANTED" class="hud-wanted hidden"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="hud-stats-row">
+                            <ui:Label name="HP_P3"   text="♥ 20/20" class="hud-stat hud-hp"/>
+                            <ui:Label name="Gold_P3" text="◈ 500g"  class="hud-stat hud-gold"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="hud-bar-track">
+                            <ui:VisualElement name="HPBar_P3" class="hud-bar-fill" style="width: 100%;"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement class="hud-slots">
+                    <ui:Label name="Weapon_P3" text="⚔ —" class="hud-slot slot-weapon"/>
+                    <ui:Label name="Armor_P3"  text="◈ —" class="hud-slot slot-armor"/>
+                    <ui:Label name="Boots_P3"  text="◉ —" class="hud-slot slot-boots"/>
+                    <ui:Label name="Acc_P3"    text="✦ —" class="hud-slot slot-acc"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+
+            <!-- Event Log -->
+            <ui:VisualElement name="EventLogContainer" class="event-log-container">
+                <ui:Button name="Btn_ToggleLog" text="▼  EVENT HISTORY" class="log-toggle-btn"/>
+                <ui:ScrollView name="EventLogScroll" class="event-log-scroll"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- RIGHT COLUMN: P2 + P4 -->
+        <ui:VisualElement class="side-column right-column">
+
+            <!-- HUD Player 2 -->
+            <ui:VisualElement name="HUD_P2" class="hud-container panel-base hidden">
+                <ui:VisualElement class="hud-top-row">
+                    <ui:VisualElement class="portrait-frame">
+                        <ui:VisualElement name="Portrait_P2" class="portrait-image"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement class="hud-core-stats">
+                        <ui:VisualElement class="hud-name-row">
+                            <ui:Label name="Name_P2" text="Player 2" class="hud-name"/>
+                            <ui:Label name="Wanted_P2" text="⚠ WANTED" class="hud-wanted hidden"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="hud-stats-row">
+                            <ui:Label name="HP_P2"   text="♥ 20/20" class="hud-stat hud-hp"/>
+                            <ui:Label name="Gold_P2" text="◈ 500g"  class="hud-stat hud-gold"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="hud-bar-track">
+                            <ui:VisualElement name="HPBar_P2" class="hud-bar-fill" style="width: 100%;"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement class="hud-slots">
+                    <ui:Label name="Weapon_P2" text="⚔ —" class="hud-slot slot-weapon"/>
+                    <ui:Label name="Armor_P2"  text="◈ —" class="hud-slot slot-armor"/>
+                    <ui:Label name="Boots_P2"  text="◉ —" class="hud-slot slot-boots"/>
+                    <ui:Label name="Acc_P2"    text="✦ —" class="hud-slot slot-acc"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+
+            <!-- HUD Player 4 -->
+            <ui:VisualElement name="HUD_P4" class="hud-container panel-base hidden">
+                <ui:VisualElement class="hud-top-row">
+                    <ui:VisualElement class="portrait-frame">
+                        <ui:VisualElement name="Portrait_P4" class="portrait-image"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement class="hud-core-stats">
+                        <ui:VisualElement class="hud-name-row">
+                            <ui:Label name="Name_P4" text="Player 4" class="hud-name"/>
+                            <ui:Label name="Wanted_P4" text="⚠ WANTED" class="hud-wanted hidden"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="hud-stats-row">
+                            <ui:Label name="HP_P4"   text="♥ 20/20" class="hud-stat hud-hp"/>
+                            <ui:Label name="Gold_P4" text="◈ 500g"  class="hud-stat hud-gold"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="hud-bar-track">
+                            <ui:VisualElement name="HPBar_P4" class="hud-bar-fill" style="width: 100%;"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement class="hud-slots">
+                    <ui:Label name="Weapon_P4" text="⚔ —" class="hud-slot slot-weapon"/>
+                    <ui:Label name="Armor_P4"  text="◈ —" class="hud-slot slot-armor"/>
+                    <ui:Label name="Boots_P4"  text="◉ —" class="hud-slot slot-boots"/>
+                    <ui:Label name="Acc_P4"    text="✦ —" class="hud-slot slot-acc"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+
+        </ui:VisualElement>
+    </ui:VisualElement>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         TURN BANNER — top center dropper
+    ════════════════════════════════════════════════════════════ -->
+    <ui:VisualElement name="TurnBanner" class="panel-base turn-banner">
+        <ui:Label text="CURRENT TURN" class="turn-banner-label"/>
+        <ui:Label name="TurnBannerName" text="Player 1" class="turn-banner-name"/>
+    </ui:VisualElement>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         ACTION PHASE PANEL
+    ════════════════════════════════════════════════════════════ -->
+    <ui:VisualElement name="Panel_Action" class="main-panel panel-base panel-pop hidden">
+        <ui:Label text="ACTION PHASE" class="title-text" style="margin-bottom: 4px;"/>
+        <ui:Label text="Play a card from your hand, or skip to the roll:" class="subtitle-text"/>
+        <ui:ScrollView mode="Horizontal" style="height: 175px; width: 100%; margin-bottom: 14px; border-radius: 6px; background-color: rgba(6, 4, 4, 0.5); border-width: 1px; border-color: rgba(201, 146, 42, 0.18);">
+            <ui:VisualElement name="CardContainer" style="flex-direction: row; padding: 10px; align-items: center;"/>
+        </ui:ScrollView>
+        <ui:Button name="Btn_Skip" text="▶  SKIP TO ROLL" class="action-button btn-secondary"/>
+    </ui:VisualElement>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         ROLL PHASE PANEL
+    ════════════════════════════════════════════════════════════ -->
+    <ui:VisualElement name="Panel_Roll" class="main-panel panel-base panel-pop hidden">
+        <ui:Label text="ROLL PHASE" class="title-text"/>
+        <ui:Label name="RollPlayerName" text="" class="turn-player-label"/>
+        <ui:Button name="Btn_RollMove" text="◆  THROW THE DICE" class="action-button btn-primary"/>
+        <ui:Label name="DiceRolling" text="Rolling..." class="rolling-label hidden" style="margin-top: 12px;"/>
+    </ui:VisualElement>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         MOVE DIRECTION PANEL (Boots of Retreat)
+    ════════════════════════════════════════════════════════════ -->
+    <ui:VisualElement name="Panel_MoveDir" class="main-panel panel-base panel-pop hidden">
+        <ui:Label text="BOOTS OF RETREAT" class="title-text"/>
+        <ui:Label text="Your enchanted boots let you move backward.&#10;Which direction will you take?" class="subtitle-text"/>
+        <ui:Button name="Btn_Forward"  text="▶  MOVE FORWARD"  class="action-button btn-primary"/>
+        <ui:Button name="Btn_Backward" text="◀  MOVE BACKWARD" class="action-button btn-boots"/>
+    </ui:VisualElement>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         COMBAT PANEL
+    ════════════════════════════════════════════════════════════ -->
+    <ui:VisualElement name="Panel_Combat" class="main-panel panel-base panel-pop hidden">
+        <ui:Label text="⚔  COMBAT" class="title-text title-danger"/>
+        <ui:VisualElement class="combat-versus-row">
+            <ui:VisualElement class="portrait-frame combat-portrait-frame">
+                <ui:VisualElement name="CombatPortrait" class="portrait-image"/>
+            </ui:VisualElement>
+            <ui:Label text="VS" class="equip-vs"/>
+            <ui:VisualElement class="combat-info-box">
+                <ui:Label name="CombatInfo" text="Monster ???&#10;DEF: 0" class="combat-info-text"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:Label name="CombatFlavor" text="" class="flavor-text"/>
+        <ui:Label name="CombatCrit"   text="" class="crit-hint"/>
+        <ui:Button name="Btn_Attack" text="◆  ROLL TO ATTACK" class="action-button btn-danger"/>
+        <ui:Label name="CombatRolling" text="Rolling..." class="rolling-label hidden" style="margin-top: 10px;"/>
+        <ui:Button name="Btn_Flee" text="◌  FLEE  (50% chance · −30g)" class="action-button btn-secondary"/>
+    </ui:VisualElement>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         BUY TILE PANEL
+    ════════════════════════════════════════════════════════════ -->
+    <ui:VisualElement name="Panel_Buy" class="main-panel panel-base panel-pop hidden">
+        <ui:Label text="PROPERTY CLEARED" class="title-text"/>
+        <ui:VisualElement class="info-box">
+            <ui:Label name="BuyInfo" text="Cost: —" class="info-box-text"/>
+        </ui:VisualElement>
+        <ui:Button name="Btn_BuyTile"  text="◈  PURCHASE PROPERTY" class="action-button btn-primary"/>
+        <ui:Button name="Btn_PassTile" text="PASS"                  class="action-button btn-secondary"/>
+    </ui:VisualElement>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         UPGRADE TILE PANEL
+    ════════════════════════════════════════════════════════════ -->
+    <ui:VisualElement name="Panel_Upgrade" class="main-panel panel-base panel-pop hidden">
+        <ui:Label text="UPGRADE TERRITORY" class="title-text"/>
+        <ui:Label text="Summon a Goblin Guard for 300g" class="subtitle-text"/>
+        <ui:VisualElement class="stat-row-box">
+            <ui:Label text="Toll: 50g  ·  Damage: 2 HP" class="stat-row-text"/>
+        </ui:VisualElement>
+        <ui:Button name="Btn_UpgradeTile" text="▲  UPGRADE  (300g)" class="action-button btn-primary"/>
+        <ui:Button name="Btn_PassUpgrade" text="PASS"               class="action-button btn-secondary"/>
+    </ui:VisualElement>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         TRAP PANEL
+    ════════════════════════════════════════════════════════════ -->
+    <ui:VisualElement name="Panel_Trap" class="main-panel panel-base panel-pop hidden">
+        <ui:Label text="SET A TRAP" class="title-text title-danger"/>
+        <ui:Label text="Convert your tile into a deadly trap for 200g" class="subtitle-text"/>
+        <ui:VisualElement class="stat-row-box">
+            <ui:Label text="Toll: 40g  ·  Damage: 3 HP" class="stat-row-text"/>
+            <ui:Label text="Bypasses Armour — only Trap Shield blocks it" class="stat-row-subtext"/>
+        </ui:VisualElement>
+        <ui:Button name="Btn_SetTrap"  text="◆  SET TRAP  (200g)" class="action-button btn-danger"/>
+        <ui:Button name="Btn_PassTrap" text="PASS"                class="action-button btn-secondary"/>
+    </ui:VisualElement>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         EQUIP DECISION PANEL
+    ════════════════════════════════════════════════════════════ -->
+    <ui:VisualElement name="Panel_Equip" class="main-panel panel-base panel-pop hidden">
+        <ui:Label name="EquipTitle" text="NEW ITEM FOUND" class="title-text"/>
+        <ui:VisualElement class="equip-compare">
+            <ui:VisualElement class="equip-card equip-new">
+                <ui:Label text="NEW"      class="equip-col-header equip-col-header-new"/>
+                <ui:Label name="EquipNewItem" text="" class="equip-stat-text"/>
+            </ui:VisualElement>
+            <ui:Label text="VS" class="equip-vs" style="align-self: center;"/>
+            <ui:VisualElement class="equip-card equip-old">
+                <ui:Label text="EQUIPPED" class="equip-col-header equip-col-header-old"/>
+                <ui:Label name="EquipOldItem" text="" class="equip-stat-text"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:Button name="Btn_EquipYes" text="✓  EQUIP NEW ITEM"   class="action-button btn-primary"/>
+        <ui:Button name="Btn_EquipNo"  text="✕  DISCARD NEW ITEM" class="action-button btn-secondary"/>
+    </ui:VisualElement>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         SHOP PANEL
+    ════════════════════════════════════════════════════════════ -->
+    <ui:VisualElement name="Panel_Shop" class="main-panel panel-base panel-pop hidden">
+        <ui:Label text="ITEM SHOP" class="title-text"/>
+        <ui:VisualElement class="shop-item-card">
+            <ui:Label name="ShopItemInfo" text="(Nothing in stock today)" class="shop-item-text"/>
+        </ui:VisualElement>
+        <ui:Button name="Btn_BuyItem"    text="◈  BUY ITEM"                  class="action-button btn-primary"/>
+        <ui:Button name="Btn_CraftItems" text="✦  CRAFT  (2 items → Legendary)" class="action-button btn-craft"/>
+        <ui:Button name="Btn_LeaveShop"  text="LEAVE SHOP"                   class="action-button btn-secondary"/>
+    </ui:VisualElement>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         GAME OVER PANEL
+    ════════════════════════════════════════════════════════════ -->
+    <ui:VisualElement name="Panel_GameOver" class="center-panel panel-base gameover-panel panel-pop hidden">
+        <ui:Label text="GAME OVER" class="title-text title-win"/>
+        <ui:Label name="WinnerLabel"     text="Player Wins!" class="winner-label"/>
+        <ui:Label name="WinnerGoldLabel" text="0g"          class="winner-gold-label"/>
+        <ui:Label text="The richest adventurer claims the realm!" class="gameover-subtitle"/>
+        <ui:Button name="Btn_Restart" text="◆  PLAY AGAIN" class="action-button btn-primary" style="min-width: 260px;"/>
+    </ui:VisualElement>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         CONNECT SCREEN  (Wallet Gate)
+    ════════════════════════════════════════════════════════════ -->
+    <ui:VisualElement name="ConnectScreen" class="center-panel panel-base lobby-screen panel-pop hidden">
+        <ui:Label text="AVAX · FUJI" class="connect-logo"/>
+        <ui:Label text="🎲" class="connect-crest"/>
+        <ui:Label text="Ready to Plunder?" class="connect-title"/>
+        <ui:Label text="Connect your wallet to create or join a room.&#10;Entry fees fund the prize pool — last one standing claims it all." class="connect-tagline"/>
+
+        <!-- Feature dots row -->
+        <ui:VisualElement class="connect-features-row">
+            <ui:VisualElement class="connect-feat"><ui:VisualElement class="feat-dot"/><ui:Label text="On-chain rooms"/></ui:VisualElement>
+            <ui:VisualElement class="connect-feat"><ui:VisualElement class="feat-dot"/><ui:Label text="Winner-takes-all prize"/></ui:VisualElement>
+            <ui:VisualElement class="connect-feat"><ui:VisualElement class="feat-dot"/><ui:Label text="2–4 players"/></ui:VisualElement>
+            <ui:VisualElement class="connect-feat"><ui:VisualElement class="feat-dot"/><ui:Label text="Avalanche C-Chain"/></ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:Button name="BtnConnect" text="CONNECT WALLET" class="action-button btn-connect" style="min-width: 280px;"/>
+        <ui:Label  name="LblConnectStatus" text="" class="connect-status"/>
+    </ui:VisualElement>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         LOBBY SCREEN
+    ════════════════════════════════════════════════════════════ -->
+    <ui:VisualElement name="LobbyScreen" class="center-panel panel-base lobby-screen panel-pop hidden" style="min-width: 560px; max-width: 680px;">
+
+        <ui:Label text="LOOTOPOLY  LOBBY" class="lobby-title"/>
+
+        <!-- Stats chips -->
+        <ui:VisualElement class="lobby-stats-row">
+            <ui:VisualElement class="lobby-stat-chip">
+                <ui:Label text="YOUR BALANCE"  class="lobby-stat-label"/>
+                <ui:Label name="LblBalance"    text="0.00 AVAX" class="lobby-stat-value lobby-stat-value-ember"/>
+            </ui:VisualElement>
+            <ui:VisualElement class="lobby-stat-chip">
+                <ui:Label text="OPEN ROOMS"    class="lobby-stat-label"/>
+                <ui:Label name="LblOpenRooms"  text="0" class="lobby-stat-value lobby-stat-value-mist"/>
+            </ui:VisualElement>
+            <ui:VisualElement class="lobby-stat-chip">
+                <ui:Label text="TOTAL ROOMS"   class="lobby-stat-label"/>
+                <ui:Label name="LblTotalRooms" text="0" class="lobby-stat-value lobby-stat-value-teal"/>
+            </ui:VisualElement>
+            <ui:VisualElement class="lobby-stat-chip" name="ChipClaimable">
+                <ui:Label text="CLAIMABLE  ↓"  class="lobby-stat-label"/>
+                <ui:Label name="LblClaimable"  text="0.00 AVAX" class="lobby-stat-value"/>
+                <ui:Label text="tap to withdraw" class="lobby-stat-label" style="margin-top: 2px;"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- Room List header + Refresh -->
+        <ui:VisualElement style="flex-direction: row; align-items: center; justify-content: space-between; margin-bottom: 9px;">
+            <ui:Label text="OPEN ROOMS" class="lobby-section-header" style="margin-bottom: 0;"/>
+            <ui:Button name="BtnRefresh" text="↻  REFRESH" class="action-button btn-secondary" style="width: auto; height: 34px; padding: 0 14px; margin-top: 0; font-size: 12px;"/>
+        </ui:VisualElement>
+        <ui:ScrollView name="RoomList" class="room-list"/>
+
+        <!-- Withdraw button (below list) -->
+        <ui:Button name="BtnWithdraw" text="◈  WITHDRAW CLAIMABLE" class="action-button btn-secondary" style="height: 40px; font-size: 13px; margin-bottom: 16px;"/>
+
+        <!-- Create Room -->
+        <ui:Label text="CREATE ROOM" class="lobby-section-header"/>
+        <ui:VisualElement class="create-section">
+
+            <ui:Label text="ENTRY FEE (AVAX)" class="create-label" style="margin-bottom: 6px;"/>
+            <uie:FloatField name="InputFee" value="0.1" class="create-field" style="width: 100%; margin-bottom: 8px; font-size: 18px; padding: 8px 12px; -unity-text-align: middle-left;"/>
+            <ui:VisualElement class="fee-presets-row" style="margin-bottom: 14px;">
+                <ui:Button name="FeePreset0" text="0.05" class="fee-preset-btn"/>
+                <ui:Button name="FeePreset1" text="0.10" class="fee-preset-btn"/>
+                <ui:Button name="FeePreset2" text="0.50" class="fee-preset-btn"/>
+                <ui:Button name="FeePreset3" text="1.00" class="fee-preset-btn"/>
+            </ui:VisualElement>
+
+            <ui:Label text="MAX PLAYERS" class="create-label" style="margin-bottom: 6px;"/>
+            <ui:VisualElement class="player-opts-row" style="margin-bottom: 14px;">
+                <ui:Button name="PlayerOpt2" text="2" class="player-opt-btn"/>
+                <ui:Button name="PlayerOpt3" text="3" class="player-opt-btn"/>
+                <ui:Button name="PlayerOpt4" text="4" class="player-opt-btn"/>
+            </ui:VisualElement>
+
+            <!-- Prize preview -->
+            <ui:VisualElement class="prize-preview-box">
+                <ui:Label text="WINNER PRIZE POOL" class="prize-preview-label"/>
+                <ui:Label name="LblPrizePreview"   text="0.285 AVAX" class="prize-preview-val"/>
+                <ui:Label text="95% of total · 5% protocol fee" class="prize-preview-sub"/>
+            </ui:VisualElement>
+
+        </ui:VisualElement>
+
+        <ui:Button name="BtnCreateRoom" text="◆  CREATE ROOM" class="action-button btn-primary" style="height: 52px; font-size: 15px;"/>
+
+        <!-- Contract info -->
+        <ui:VisualElement class="contract-info">
+            <ui:Label text="CONTRACT INFO" class="contract-info-header"/>
+            <ui:Label name="LblContractAddr" text="Address: 0xDc68...43F5f" class="contract-link"/>
+            <ui:Label text="Protocol Fee: 5%   ·   Min Players: 2   ·   Max: 4" style="font-size: 11px; color: rgb(106, 96, 80); margin-top: 4px;"/>
+            <ui:Label text="Chain: Avalanche C-Chain" style="font-size: 11px; color: rgb(61, 184, 158); margin-top: 3px;"/>
+        </ui:VisualElement>
+
+    </ui:VisualElement>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         WAITING ROOM SCREEN
+    ════════════════════════════════════════════════════════════ -->
+    <ui:VisualElement name="WaitingScreen" class="center-panel panel-base lobby-screen panel-pop hidden" style="min-width: 500px; max-width: 600px;">
+
+        <!-- Header row with live badge -->
+        <ui:VisualElement style="flex-direction: row; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 16px;">
+            <ui:Label text="YOUR ACTIVE ROOM" class="waiting-title" style="margin-bottom: 0;"/>
+            <ui:VisualElement class="live-badge-row">
+                <ui:VisualElement class="live-dot"/>
+                <ui:Label name="LblRoomStatus" text="WAITING" class="live-label"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- Info chips -->
+        <ui:VisualElement class="waiting-info-grid">
+            <ui:VisualElement class="waiting-info-cell">
+                <ui:Label text="ROOM ID"    class="waiting-info-key"/>
+                <ui:Label name="LblRoomId"  text="#—" class="waiting-info-val"/>
+            </ui:VisualElement>
+            <ui:VisualElement class="waiting-info-cell">
+                <ui:Label text="PRIZE POOL"  class="waiting-info-key"/>
+                <ui:Label name="LblRoomPrize" text="— AVAX" class="waiting-info-val waiting-info-val-ember"/>
+            </ui:VisualElement>
+            <ui:VisualElement class="waiting-info-cell">
+                <ui:Label text="PLAYERS"      class="waiting-info-key"/>
+                <ui:Label name="LblRoomPlayers" text="1/3" class="waiting-info-val waiting-info-val-teal"/>
+            </ui:VisualElement>
+            <ui:VisualElement class="waiting-info-cell">
+                <ui:Label text="SHARE ID" class="waiting-info-key"/>
+                <ui:Label name="LblBigRoomId" text="#—" class="big-room-id" style="font-size: 18px; padding: 4px 10px; margin-bottom: 0;"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- Player slots list -->
+        <ui:Label text="PLAYERS IN ROOM" class="lobby-section-header"/>
+        <ui:VisualElement name="PlayerSlotsList" class="player-slots-list">
+            <!-- Populated at runtime by LobbyUI.cs -->
+        </ui:VisualElement>
+
+        <!-- Commit window panel (shown after roster locked) -->
+        <ui:VisualElement name="CommitPanel" class="commit-panel hidden">
+            <ui:VisualElement class="commit-header">
+                <ui:Label text="◈  COMMIT WINDOW" class="commit-title"/>
+                <ui:Label name="LblCommitCountdown" text="5:00" class="commit-countdown"/>
+            </ui:VisualElement>
+            <ui:Label text="The roster is locked! Pay your entry fee within the countdown to secure your spot. Players who don't commit lose their bond." class="commit-desc"/>
+            <ui:VisualElement class="commit-fee-box">
+                <ui:Label text="ENTRY FEE TO PAY"   class="commit-fee-label"/>
+                <ui:Label name="LblCommitFee" text="0.1000 AVAX" class="commit-fee-val"/>
+                <ui:Label text="Bond (10%) already paid — this completes your stake" class="commit-fee-sub"/>
+            </ui:VisualElement>
+            <ui:Button name="BtnCommit" text="✓  PAY ENTRY FEE  &amp;  COMMIT" class="action-button btn-primary"/>
+        </ui:VisualElement>
+
+        <!-- Action buttons row -->
+        <ui:VisualElement class="waiting-btns-row">
+            <ui:Button name="BtnLockRoster"    text="◆  LOCK ROSTER"    class="action-button btn-boots"    style="flex: 1;"/>
+            <ui:Button name="BtnDeclareWinner" text="◈  DECLARE WINNER" class="action-button btn-secondary" style="flex: 1;"/>
+        </ui:VisualElement>
+        <ui:VisualElement class="waiting-btns-row" style="margin-top: 0;">
+            <ui:Button name="BtnCancelRoom" text="✕  CANCEL ROOM" class="action-button btn-danger" style="flex: 1;"/>
+        </ui:VisualElement>
+
+        <!-- Room flow info -->
+        <ui:VisualElement class="contract-info" style="margin-top: 10px;">
+            <ui:Label text="ROOM FLOW" class="contract-info-header"/>
+            <ui:Label text="1. Host creates room + pays bond&#10;2. Players join + pay bond&#10;3. Host locks roster&#10;4. 5-min commit window opens&#10;5. All pay entry fee → game starts" style="font-size: 11px; color: rgb(106, 96, 80); white-space: normal; line-height: 1.6;"/>
+        </ui:VisualElement>
+
+    </ui:VisualElement>
+
+</ui:UXML>

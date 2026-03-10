@@ -1,0 +1,54 @@
+/**
+ * ============================================================
+ * LOOTOPOLY – LootopolyUIBridge.jslib  (v2.0 — HTML OVERLAY)
+ * ============================================================
+ * Replaces the old LootopolyBridge.jslib.
+ * All functions route state from Unity C# to the HTML overlay.
+ *
+ * The HTML overlay defines these global functions:
+ *   window.UpdateGameState(json)  – full state push
+ *   window.LogEvent(msg)          – single log entry
+ *   window.ShowToast(json)        – {msg, type} toast
+ *   window.OnDiceRolled(result)   – dice result for animation
+ * ============================================================
+ */
+
+mergeInto(LibraryManager.library, {
+
+    JS_UpdateGameState: function(jsonPtr) {
+        var json = UTF8ToString(jsonPtr);
+        if (typeof window.UpdateGameState === 'function') {
+            window.UpdateGameState(json);
+        } else {
+            console.warn('[LootopolyUIBridge] window.UpdateGameState not found. JSON:', json);
+        }
+    },
+
+    JS_LogEvent: function(msgPtr) {
+        var msg = UTF8ToString(msgPtr);
+        if (typeof window.LogEvent === 'function') {
+            window.LogEvent(msg);
+        }
+    },
+
+    JS_ShowToast: function(payloadPtr) {
+        var payload = UTF8ToString(payloadPtr);
+        if (typeof window.ShowToast === 'function') {
+            window.ShowToast(payload);
+        }
+    },
+
+    JS_OnDiceRolled: function(result) {
+        if (typeof window.OnDiceRolled === 'function') {
+            window.OnDiceRolled(result);
+        }
+    },
+
+    JS_OnGameStarted: function(roomIdPtr) {
+        var roomId = UTF8ToString(roomIdPtr);
+        if (typeof window.startGame === 'function') {
+            window.startGame(roomId);
+        }
+    }
+
+});

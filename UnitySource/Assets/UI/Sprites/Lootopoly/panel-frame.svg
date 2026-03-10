@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Lootopoly UI | panel-frame.svg — Unity UI Toolkit compatible -->
+<!-- Usage: background-image on .main-panel, .lobby-screen, etc.  -->
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="320" viewBox="0 0 480 320">
+  <defs>
+    <linearGradient id="panel-bg-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#1a1008" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#0a0602" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="top-shine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#c9922a" stop-opacity="0"/>
+      <stop offset="30%"  stop-color="#e8b84b" stop-opacity="0.55"/>
+      <stop offset="70%"  stop-color="#e8b84b" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#c9922a" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="inner-glow" cx="50%" cy="20%" r="60%">
+      <stop offset="0%"   stop-color="#c9922a" stop-opacity="0.07"/>
+      <stop offset="100%" stop-color="#c9922a" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Corner ornament clip -->
+    <clipPath id="panel-clip">
+      <rect width="480" height="320" rx="16"/>
+    </clipPath>
+  </defs>
+
+  <!-- Base fill -->
+  <rect width="480" height="320" rx="16" fill="url(#panel-bg-grad)"/>
+  <!-- Inner glow -->
+  <rect width="480" height="320" rx="16" fill="url(#inner-glow)" clip-path="url(#panel-clip)"/>
+  <!-- Scanline texture -->
+  <rect width="480" height="320" rx="16" fill="none"
+        stroke="#c9922a" stroke-width="2.5" stroke-opacity="0.75"/>
+  <!-- Top shimmer line -->
+  <line x1="32" y1="1.25" x2="448" y2="1.25"
+        stroke="url(#top-shine)" stroke-width="2"/>
+  <!-- Inner border inset -->
+  <rect x="5" y="5" width="470" height="310" rx="12"
+        fill="none" stroke="#ffffff" stroke-width="0.5" stroke-opacity="0.05"/>
+  <!-- Corner ticks TL -->
+  <path d="M 16,0 L 16,10 M 0,16 L 10,16" stroke="#e8b84b" stroke-width="1.5" stroke-opacity="0.8"/>
+  <!-- Corner ticks TR -->
+  <path d="M 464,0 L 464,10 M 480,16 L 470,16" stroke="#e8b84b" stroke-width="1.5" stroke-opacity="0.8"/>
+  <!-- Corner ticks BL -->
+  <path d="M 16,320 L 16,310 M 0,304 L 10,304" stroke="#e8b84b" stroke-width="1.5" stroke-opacity="0.8"/>
+  <!-- Corner ticks BR -->
+  <path d="M 464,320 L 464,310 M 480,304 L 470,304" stroke="#e8b84b" stroke-width="1.5" stroke-opacity="0.8"/>
+</svg>

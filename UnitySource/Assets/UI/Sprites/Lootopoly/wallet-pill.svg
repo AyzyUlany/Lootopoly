@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Lootopoly UI | wallet-pill.svg — Unity UI Toolkit compatible   -->
+<!-- Usage: background-image on wallet address display in header    -->
+<svg xmlns="http://www.w3.org/2000/svg" width="110" height="32" viewBox="0 0 110 32">
+  <defs>
+    <linearGradient id="wallet-bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#221c10" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#161208" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+  <rect width="110" height="32" rx="6" fill="url(#wallet-bg)"/>
+  <rect width="110" height="32" rx="6" fill="none"
+        stroke="#c9922a" stroke-width="1" stroke-opacity="0.4"/>
+  <!-- Subtle inner highlight -->
+  <rect x="2" y="2" width="106" height="28" rx="4.5" fill="none"
+        stroke="#ffffff" stroke-width="0.5" stroke-opacity="0.04"/>
+</svg>

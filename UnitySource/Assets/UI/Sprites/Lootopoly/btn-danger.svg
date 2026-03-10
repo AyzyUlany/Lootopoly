@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Lootopoly UI | btn-danger.svg — Unity UI Toolkit compatible   -->
+<!-- Usage: background-image on .btn-danger buttons (combat, cancel)-->
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="52" viewBox="0 0 320 52">
+  <defs>
+    <linearGradient id="btn-red" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#7a1818"/>
+      <stop offset="50%"  stop-color="#b83a2a"/>
+      <stop offset="100%" stop-color="#7a1818"/>
+    </linearGradient>
+    <linearGradient id="btn-red-sheen" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#ffffff" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.10"/>
+    </linearGradient>
+  </defs>
+  <rect width="320" height="48" rx="8" fill="url(#btn-red)"/>
+  <rect width="320" height="48" rx="8" fill="url(#btn-red-sheen)"/>
+  <line x1="12" y1="1" x2="308" y2="1" stroke="#ffffff" stroke-width="1" stroke-opacity="0.18"/>
+  <rect width="320" height="48" rx="8" fill="none"
+        stroke="#e04e38" stroke-width="1.5" stroke-opacity="0.7"/>
+  <rect x="3" y="48" width="314" height="4" rx="2" fill="#400a0a" fill-opacity="0.65"/>
+</svg>

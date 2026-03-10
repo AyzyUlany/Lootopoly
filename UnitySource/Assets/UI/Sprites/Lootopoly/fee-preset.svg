@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Lootopoly UI | fee-preset.svg — Unity UI Toolkit compatible    -->
+<!-- Usage: background-image on .fee-preset-btn                     -->
+<svg xmlns="http://www.w3.org/2000/svg" width="60" height="28" viewBox="0 0 60 28">
+  <defs>
+    <linearGradient id="preset-bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#3a2a0a" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#1e1606" stop-opacity="0.7"/>
+    </linearGradient>
+  </defs>
+  <rect width="60" height="28" rx="6" fill="url(#preset-bg)"/>
+  <rect width="60" height="28" rx="6" fill="none"
+        stroke="#c8981a" stroke-width="1" stroke-opacity="0.6"/>
+  <line x1="8" y1="0.75" x2="52" y2="0.75" stroke="#e8b84b" stroke-width="0.75" stroke-opacity="0.22"/>
+</svg>

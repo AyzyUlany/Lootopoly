@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Lootopoly UI | event-log.svg — Unity UI Toolkit compatible     -->
+<!-- Usage: background-image on .event-log-scroll                   -->
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="400" viewBox="0 0 300 400">
+  <defs>
+    <linearGradient id="log-bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#000000" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.45"/>
+    </linearGradient>
+    <!-- Fade-out at top for scroll readability -->
+    <linearGradient id="log-top-fade" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#000000" stop-opacity="0.5"/>
+      <stop offset="20%"  stop-color="#000000" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="400" rx="10" fill="url(#log-bg)"/>
+  <rect width="300" height="400" rx="10" fill="none"
+        stroke="#ffffff" stroke-width="1" stroke-opacity="0.08"/>
+  <!-- Top fade mask overlay -->
+  <rect width="300" height="40" rx="10" fill="url(#log-top-fade)"/>
+  <!-- Corner ticks -->
+  <path d="M 10,2 L 10,6 M 2,10 L 6,10"   stroke="#c9922a" stroke-width="1" stroke-opacity="0.3"/>
+  <path d="M 290,2 L 290,6 M 298,10 L 294,10" stroke="#c9922a" stroke-width="1" stroke-opacity="0.3"/>
+</svg>

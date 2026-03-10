@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Lootopoly UI | header-bar.svg — Unity UI Toolkit compatible    -->
+<!-- Usage: background-image on the top nav bar of each screen      -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="68" viewBox="0 0 1280 68">
+  <defs>
+    <linearGradient id="hdr-bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#0e0a04" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#060402" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="hdr-bottom-line" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#e8b84b" stop-opacity="0"/>
+      <stop offset="20%"  stop-color="#e8b84b" stop-opacity="0.45"/>
+      <stop offset="80%"  stop-color="#e8b84b" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#e8b84b" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="68" fill="url(#hdr-bg)"/>
+  <!-- Bottom divider -->
+  <line x1="0" y1="67.5" x2="1280" y2="67.5" stroke="url(#hdr-bottom-line)" stroke-width="1"/>
+  <!-- Subtle inner top edge -->
+  <line x1="0" y1="0" x2="1280" y2="0" stroke="#e8b84b" stroke-width="0.5" stroke-opacity="0.08"/>
+  <!-- Logo bracket left -->
+  <line x1="18" y1="18" x2="18" y2="50" stroke="#e8b84b" stroke-width="2.5" stroke-opacity="0.85"/>
+</svg>

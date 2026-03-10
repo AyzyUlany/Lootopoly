@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31d489144e1445a78fe3263a420a310a, type: 3}
+  m_Name: PlunderersPick
+  m_EditorClassIdentifier: Assembly-CSharp::LootData
+  lootName: PlunderersPick
+  description: +2 ATK. Monster kills trigger a +50% loot drop chance bonus.
+  lootSprite: {fileID: 0}
+  slot: 0
+  rarity: 2
+  attackBonus: 2
+  rerollBestOf: 0
+  killBonusGold: 0
+  hasCriticalStrike: 0
+  hasGuaranteedLootChance: 1
+  defenseBonus: 0
+  thornsDamage: 0
+  trapShieldCharges: 0
+  hasLastStand: 0
+  moveBonus: 0
+  canMoveBackward: 0
+  hasTrapDodge: 0
+  shopDiscount: 0
+  hasGhostStep: 0
+  passiveGoldPerTurn: 0
+  goldMultiplier: 1
+  tollLifestealPercent: 0
+  hasCardReflect: 0
+  hasDoubleCardDraw: 0
+  isCraftedOnly: 0
+  trapShieldChargesRemaining: 0
+  lastStandUsed: 0
+  ghostStepActive: 0

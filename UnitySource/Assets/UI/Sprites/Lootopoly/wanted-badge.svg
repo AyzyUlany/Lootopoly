@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Lootopoly UI | wanted-badge.svg — Unity UI Toolkit compatible  -->
+<!-- Usage: background-image on .hud-wanted label                   -->
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="22" viewBox="0 0 64 22">
+  <defs>
+    <linearGradient id="wanted-bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#4a1010" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#2a0808" stop-opacity="0.85"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="22" rx="5" fill="url(#wanted-bg)"/>
+  <rect width="64" height="22" rx="5" fill="none"
+        stroke="#e04e38" stroke-width="1.25" stroke-opacity="0.75"/>
+  <!-- Left accent line -->
+  <rect x="0" y="0" width="2" height="22" rx="1" fill="#e04e38" fill-opacity="0.7"/>
+  <!-- Highlight top -->
+  <line x1="6" y1="0.75" x2="58" y2="0.75" stroke="#ff7060" stroke-width="0.75" stroke-opacity="0.25"/>
+</svg>

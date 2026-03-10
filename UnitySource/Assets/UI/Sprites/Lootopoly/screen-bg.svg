@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Lootopoly UI | screen-bg.svg — Unity UI Toolkit compatible     -->
+<!-- Usage: background-image on the root/full-screen background     -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <defs>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none"
+            stroke="#c9922a" stroke-width="0.5" opacity="0.05"/>
+    </pattern>
+    <radialGradient id="glow-gold" cx="25%" cy="35%" r="50%">
+      <stop offset="0%"   stop-color="#c9922a" stop-opacity="0.09"/>
+      <stop offset="100%" stop-color="#c9922a" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow-teal" cx="78%" cy="72%" r="48%">
+      <stop offset="0%"   stop-color="#2a8b7a" stop-opacity="0.07"/>
+      <stop offset="100%" stop-color="#2a8b7a" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="diagonal-line" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#c9922a" stop-opacity="0"/>
+      <stop offset="50%"  stop-color="#c9922a" stop-opacity="0.03"/>
+      <stop offset="100%" stop-color="#c9922a" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <!-- Deep black base -->
+  <rect width="1280" height="720" fill="#060404"/>
+  <!-- Grid overlay -->
+  <rect width="1280" height="720" fill="url(#grid)"/>
+  <!-- Ambient gold glow top-left -->
+  <ellipse cx="320" cy="250" rx="500" ry="300" fill="url(#glow-gold)"/>
+  <!-- Ambient teal glow bottom-right -->
+  <ellipse cx="998" cy="518" rx="500" ry="300" fill="url(#glow-teal)"/>
+  <!-- Diagonal accent line -->
+  <line x1="0" y1="720" x2="1280" y2="0" stroke="url(#diagonal-line)" stroke-width="1"/>
+</svg>

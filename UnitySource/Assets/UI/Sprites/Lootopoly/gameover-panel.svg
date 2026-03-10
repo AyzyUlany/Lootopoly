@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Lootopoly UI | gameover-panel.svg — Unity UI Toolkit compatible -->
+<!-- Usage: background-image on #Panel_GameOver                      -->
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="340" viewBox="0 0 480 340">
+  <defs>
+    <radialGradient id="win-glow" cx="50%" cy="30%" r="55%">
+      <stop offset="0%"   stop-color="#c9922a" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#c9922a" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="win-bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#1e1408" stop-opacity="0.99"/>
+      <stop offset="100%" stop-color="#080604" stop-opacity="0.99"/>
+    </linearGradient>
+    <linearGradient id="win-top-shine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#e8b84b" stop-opacity="0"/>
+      <stop offset="25%"  stop-color="#ffe060" stop-opacity="0.8"/>
+      <stop offset="75%"  stop-color="#ffe060" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#e8b84b" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="480" height="340" rx="18" fill="url(#win-bg)"/>
+  <rect width="480" height="340" rx="18" fill="url(#win-glow)"/>
+  <!-- Gold border -->
+  <rect width="480" height="340" rx="18" fill="none"
+        stroke="#c9922a" stroke-width="3" stroke-opacity="0.85"/>
+  <!-- Top shimmer -->
+  <line x1="36" y1="1.5" x2="444" y2="1.5" stroke="url(#win-top-shine)" stroke-width="2.5"/>
+  <!-- Inner border -->
+  <rect x="6" y="6" width="468" height="328" rx="14" fill="none"
+        stroke="#e8b84b" stroke-width="0.75" stroke-opacity="0.18"/>
+  <!-- Corner ticks TL -->
+  <path d="M 18,2 L 18,12 M 2,18 L 12,18"   stroke="#ffe060" stroke-width="2" stroke-opacity="0.85"/>
+  <!-- Corner ticks TR -->
+  <path d="M 462,2 L 462,12 M 478,18 L 468,18" stroke="#ffe060" stroke-width="2" stroke-opacity="0.85"/>
+  <!-- Corner ticks BL -->
+  <path d="M 18,338 L 18,328 M 2,322 L 12,322"  stroke="#ffe060" stroke-width="2" stroke-opacity="0.85"/>
+  <!-- Corner ticks BR -->
+  <path d="M 462,338 L 462,328 M 478,322 L 468,322" stroke="#ffe060" stroke-width="2" stroke-opacity="0.85"/>
+  <!-- Decorative side lines -->
+  <line x1="24" y1="80" x2="24" y2="260" stroke="#c9922a" stroke-width="1" stroke-opacity="0.15"/>
+  <line x1="456" y1="80" x2="456" y2="260" stroke="#c9922a" stroke-width="1" stroke-opacity="0.15"/>
+</svg>

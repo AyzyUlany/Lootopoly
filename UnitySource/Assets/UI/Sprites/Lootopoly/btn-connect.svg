@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Lootopoly UI | btn-connect.svg — Unity UI Toolkit compatible  -->
+<!-- Usage: background-image on .btn-connect (Connect Wallet)       -->
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="56" viewBox="0 0 320 56">
+  <defs>
+    <linearGradient id="btn-teal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#1e6040"/>
+      <stop offset="50%"  stop-color="#2a8b5a"/>
+      <stop offset="100%" stop-color="#1e6040"/>
+    </linearGradient>
+    <linearGradient id="btn-teal-sheen" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#ffffff" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.08"/>
+    </linearGradient>
+  </defs>
+  <rect width="320" height="52" rx="10" fill="url(#btn-teal)"/>
+  <rect width="320" height="52" rx="10" fill="url(#btn-teal-sheen)"/>
+  <line x1="14" y1="1" x2="306" y2="1" stroke="#ffffff" stroke-width="1" stroke-opacity="0.22"/>
+  <rect width="320" height="52" rx="10" fill="none"
+        stroke="#3db89e" stroke-width="2" stroke-opacity="0.75"/>
+  <rect x="3" y="52" width="314" height="4" rx="2" fill="#0a2818" fill-opacity="0.7"/>
+</svg>

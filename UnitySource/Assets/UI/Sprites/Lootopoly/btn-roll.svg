@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Lootopoly UI | btn-roll.svg — Unity UI Toolkit compatible      -->
+<!-- Usage: background-image on #Btn_RollMove                       -->
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="56" viewBox="0 0 320 56">
+  <defs>
+    <linearGradient id="roll-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#b87820"/>
+      <stop offset="40%"  stop-color="#e8c040"/>
+      <stop offset="100%" stop-color="#a06818"/>
+    </linearGradient>
+    <radialGradient id="roll-center-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#ffffff" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="roll-sheen" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#ffffff" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.12"/>
+    </linearGradient>
+  </defs>
+  <rect width="320" height="52" rx="10" fill="url(#roll-bg)"/>
+  <rect width="320" height="52" rx="10" fill="url(#roll-sheen)"/>
+  <rect width="320" height="52" rx="10" fill="url(#roll-center-glow)"/>
+  <line x1="14" y1="1" x2="306" y2="1" stroke="#ffffff" stroke-width="1" stroke-opacity="0.28"/>
+  <rect width="320" height="52" rx="10" fill="none"
+        stroke="#ffe060" stroke-width="2" stroke-opacity="0.75"/>
+  <!-- Dice pip decorations on sides -->
+  <circle cx="24" cy="26" r="3" fill="#1a1200" fill-opacity="0.4"/>
+  <circle cx="296" cy="26" r="3" fill="#1a1200" fill-opacity="0.4"/>
+  <!-- Bottom bevel -->
+  <rect x="4" y="52" width="312" height="4" rx="2" fill="#3c1e00" fill-opacity="0.6"/>
+</svg>

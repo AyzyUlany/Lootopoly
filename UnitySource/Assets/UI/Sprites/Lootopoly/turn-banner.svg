@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Lootopoly UI | turn-banner.svg — Unity UI Toolkit compatible   -->
+<!-- Usage: background-image on .turn-banner                        -->
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="56" viewBox="0 0 240 56">
+  <defs>
+    <linearGradient id="banner-bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#1e1408" stop-opacity="0.97"/>
+      <stop offset="100%" stop-color="#0a0602" stop-opacity="0.97"/>
+    </linearGradient>
+    <linearGradient id="banner-side-left" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#c9922a" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#c9922a" stop-opacity="0.5"/>
+    </linearGradient>
+    <linearGradient id="banner-side-right" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#c9922a" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#c9922a" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <!-- Main body — open top, rounded bottom -->
+  <path d="M 0,0 L 240,0 L 240,44 Q 240,56 228,56 L 12,56 Q 0,56 0,44 Z"
+        fill="url(#banner-bg)"/>
+  <!-- Side border left -->
+  <line x1="0" y1="0" x2="0" y2="44" stroke="url(#banner-side-left)" stroke-width="2"/>
+  <!-- Side border right -->
+  <line x1="240" y1="0" x2="240" y2="44" stroke="url(#banner-side-right)" stroke-width="2"/>
+  <!-- Bottom arc border -->
+  <path d="M 0,44 Q 0,56 12,56 L 228,56 Q 240,56 240,44"
+        fill="none" stroke="#82600a" stroke-width="2"/>
+  <!-- Top shimmer (no border on top — it connects to screen edge) -->
+  <line x1="0" y1="0" x2="240" y2="0" stroke="#e8b84b" stroke-width="1" stroke-opacity="0.2"/>
+  <!-- Inner line -->
+  <path d="M 4,44 Q 4,52 12,52 L 228,52 Q 236,52 236,44 L 236,4 L 4,4 Z"
+        fill="none" stroke="#ffffff" stroke-width="0.5" stroke-opacity="0.05"/>
+</svg>
