@@ -5,7 +5,7 @@
 ### 🔗 Quick Links
 * **Live MVP (Play Here):** https://lootopoly.vercel.app/
 * **Smart Contract (Fuji Testnet):**[https://testnet.snowtrace.io/address/0x05d65E6c0fe516Dc296C80Eb448848DAD35222fC](https://testnet.snowtrace.io/address/0x05d65E6c0fe516Dc296C80Eb448848DAD35222fC)
-* **Video Demo:** [YOUR YOUTUBE/LOOM LINK HERE]
+* **Video Demo:** (https://youtu.be/xGZg4jkYgVU)
 
 ### 🎮 How It Works
 1. **Connect Core/MetaMask:** Ensure you are on the Avalanche Fuji Testnet.
