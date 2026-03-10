@@ -3,7 +3,7 @@
 **Lootopoly** is a fully on-chain competitive board game built on Avalanche. Monopoly meets JRPG combat with trustless escrows and Chainlink VRF.
 
 ### 🔗 Quick Links
-* **Live MVP (Play Here):** [YOUR VERCEL LINK HERE]
+* **Live MVP (Play Here):** https://lootopoly.vercel.app/
 * **Smart Contract (Fuji Testnet):**[https://testnet.snowtrace.io/address/0x05d65E6c0fe516Dc296C80Eb448848DAD35222fC](https://testnet.snowtrace.io/address/0x05d65E6c0fe516Dc296C80Eb448848DAD35222fC)
 * **Video Demo:** [YOUR YOUTUBE/LOOM LINK HERE]
 
